@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "483322908312",
+    "project_id": "awake-4d369",
+    "storage_bucket": "awake-4d369.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:483322908312:android:ebd4609656f1a2aa5ecaed",
+        "android_client_info": {
+          "package_name": "com.example.awake"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "483322908312-936sltpn00ng34mriqdj2q4afgqjvv5b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.awake",
+            "certificate_hash": "44058d1e88309ac1c81542c2414cd36a87abb5da"
+          }
+        },
+        {
+          "client_id": "483322908312-u9lt28ppdu9nncek7qvpfcvufb4i3hi3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvXoZ4Bkor9jndgRTrkFwms8ooi32Nqrk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "483322908312-u9lt28ppdu9nncek7qvpfcvufb4i3hi3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

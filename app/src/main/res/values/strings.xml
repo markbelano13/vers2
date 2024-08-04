@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Awake</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="tfe_od_app_name" translation_description="Object Detection demo app [CHAR_LIMIT=40]">TFL Detect</string>
+    <string name="tfe_od_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
+    <string-array name="time_periods">
+        <item>Today</item>
+        <item>Yesterday</item>
+        <item>3 Days</item>
+        <item>7 Days</item>
+        <item>30 Days</item>
+    </string-array>
+    <string name="mapbox_access_token" translatable="false" tools:ignore="UnusedResources">sk.eyJ1IjoidGl5b3dvcmtzIiwiYSI6ImNsdGcwbHE5MTB1Z3QyaXFsdHAxZHN5N3oifQ.ZvLhY5cIoH0Yaxbak7ZcXw</string>
+</resources>

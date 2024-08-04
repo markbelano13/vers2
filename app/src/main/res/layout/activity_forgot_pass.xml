@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".ForgotPassActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/BGcircleFill"
+            android:layout_width="360dp"
+            android:layout_height="360dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-130dp"
+            android:layout_marginEnd="-35dp"
+            app:srcCompat="@drawable/bg_ellipse_1" />
+
+        <ImageView
+            android:id="@+id/BGcircleStroke"
+            android:layout_width="460dp"
+            android:layout_height="406dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="-154dp"
+            android:layout_marginEnd="-146dp"
+            app:srcCompat="@drawable/bg_ellipse_2" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="89dp"
+            android:layout_height="304dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="-80dp"
+            android:layout_marginLeft="-30dp"
+            android:src="@drawable/bg_rectangle_4" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="166dp"
+            android:layout_height="289dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="-25dp"
+            android:layout_marginBottom="0dp"
+            android:src="@drawable/bg_rectangle_3"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="195dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="74dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Forgot Password"
+            android:gravity="center"
+            android:textColor="@color/primary"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="279dp"
+            android:layout_height="92dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="Don't worry, we got you!"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ETusernameLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            app:endIconMode="clear_text"
+            android:textColorHint="@color/selection_highlight"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/ETusernameForgotPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="Email"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:textSize="16sp"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/TVusernameErr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Required*"
+            android:textColor="@color/red"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/ETusernameLayout"
+            app:layout_constraintTop_toBottomOf="@+id/ETusernameLayout" />
+
+
+        <Button
+            android:id="@+id/BTNResetPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/buttonsign_inup"
+            android:elevation="20dp"
+            android:ems="8"
+            android:fontFamily="@font/poppins_semibold"
+            android:padding="10dp"
+            android:textSize="20sp"
+            android:text="Reset Password"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ETusernameLayout" />
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/BTNloadingForgotPass"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="3dp"
+            android:visibility="gone"
+            android:elevation="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/BTNResetPass"
+            app:layout_constraintEnd_toEndOf="@+id/BTNResetPass"
+            app:layout_constraintStart_toStartOf="@+id/BTNResetPass"
+            app:layout_constraintTop_toTopOf="@+id/BTNResetPass"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading" />
+
+        <TextView
+            android:id="@+id/TVsignInForgotPass"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="Back to sign in"
+            android:textColor="@drawable/create_login_text_button"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/BTNResetPass" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

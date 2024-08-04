@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+
+        >
+
+
+
+        <TextView
+            android:id="@+id/TVTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:text="Login Failed" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/Dialogloading"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="-10dp"
+            android:elevation="10dp"
+            android:visibility="gone"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            app:lottie_colorFilter="@color/primary"
+            app:lottie_rawRes="@raw/loading" />
+
+        <TextView
+            android:id="@+id/TVInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_line_below"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:paddingRight="10dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:text="Username or Password is incrorrect" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/TVCancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/grey_btn_ripple"
+                android:clickable="true"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="Okay"
+                android:textColor="@color/primary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/TVAction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_line_left"
+                android:clickable="true"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:paddingTop="4dp"
+                android:text="Logout"
+                android:textColor="@color/primary"
+                android:textSize="16sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

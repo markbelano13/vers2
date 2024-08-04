@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6E6E6"
+    android:orientation="vertical"
+    android:clickable="true"
+    tools:context=".PhoneFrag">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/linearLayout9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/phoneSearchTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="17dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="17dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/background_frame"
+                    android:ems="10"
+                    android:fontFamily="@font/nunito_sans"
+                    android:hint="Search contacts"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="15dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_search"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/phoneSearchTV"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="17dp"
+                android:layout_marginEnd="17dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/background_frame">
+
+
+                />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center">
+
+
+                        <TextView
+                            android:id="@+id/contactFavorites"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/bg_line_below_text"
+                            android:clickable="true"
+                            android:fontFamily="@font/nunitosans_semibold"
+
+                            android:paddingBottom="2dp"
+                            android:text="  Favorites  "
+                            android:textColor="@drawable/primary_black_selector"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/phoneContacts"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:clickable="true"
+                            android:fontFamily="@font/nunitosans_semibold"
+                            android:paddingBottom="2dp"
+                            android:text=" Contacts "
+                            android:textColor="@drawable/black_primary_selector"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/contactsRV"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <ImageButton
+                            android:id="@+id/dialPadBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/grey_btn_ripple_circle"
+                            android:src="@drawable/ic_dialpad"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dialPadLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/background_frame_outline_top"
+            android:visibility="visible">
+
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/phoneNumberET"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_line_below_text"
+                            android:ems="10"
+                            android:fontFamily="@font/sf_pro_display_regular"
+                            android:gravity="center"
+                            android:inputType="none"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:text=""
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:visibility="visible"
+                            tools:layout_editor_absoluteX="6dp"
+                            tools:layout_editor_absoluteY="331dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:id="@+id/phone1tv"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:maxLength="13"
+                                android:paddingBottom="15dp"
+                                android:text="1"
+                                android:textColor="@drawable/black_primary_selector"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textsView13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-15dp"
+                                android:textSize="10sp"
+                                android:text="oo"
+
+                                app:layout_constraintEnd_toEndOf="@+id/phone1tv"
+                                app:layout_constraintStart_toStartOf="@+id/phone1tv"
+                                app:layout_constraintTop_toBottomOf="@+id/phone1tv" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:id="@+id/phone2tv"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:text="2"
+                                android:textColor="@drawable/black_primary_selector"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textVsiew13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-15dp"
+                                android:textSize="10sp"
+                                android:text="ABC"
+
+                                app:layout_constraintEnd_toEndOf="@+id/phone2tv"
+                                app:layout_constraintStart_toStartOf="@+id/phone2tv"
+                                app:layout_constraintTop_toBottomOf="@+id/phone2tv" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:id="@+id/phone3tv"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:text="3"
+                                android:textColor="@drawable/black_primary_selector"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textVsisew13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-15dp"
+                                android:textSize="10sp"
+                                android:text="DEF"
+
+                                app:layout_constraintEnd_toEndOf="@+id/phone3tv"
+                                app:layout_constraintStart_toStartOf="@+id/phone3tv"
+                                app:layout_constraintTop_toBottomOf="@+id/phone3tv" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:id="@+id/phone4tv"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:text="4"
+                                android:textColor="@drawable/black_primary_selector"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textViews13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-15dp"
+                                android:textSize="10sp"
+                                android:text="GHI"
+                                app:layout_constraintEnd_toEndOf="@+id/phone4tv"
+                                app:layout_constraintStart_toStartOf="@+id/phone4tv"
+                                app:layout_constraintTop_toBottomOf="@+id/phone4tv" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:id="@+id/phone5tv"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:text="5"
+                                android:textColor="@drawable/black_primary_selector"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textVsiesw13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-15dp"
+                                android:textSize="10sp"
+                                android:text="JKL"
+
+                                app:layout_constraintEnd_toEndOf="@+id/phone5tv"
+                                app:layout_constraintStart_toStartOf="@+id/phone5tv"
+                                app:layout_constraintTop_toBottomOf="@+id/phone5tv" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:id="@+id/phone6tv"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:text="6"
+                                android:textColor="@drawable/black_primary_selector"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textVsdisew13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-15dp"
+                                android:textSize="10sp"
+                                android:text="MNO"
+
+                                app:layout_constraintEnd_toEndOf="@+id/phone6tv"
+                                app:layout_constraintStart_toStartOf="@+id/phone6tv"
+                                app:layout_constraintTop_toBottomOf="@+id/phone6tv" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:id="@+id/phone7tv"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:text="7"
+                                android:textColor="@drawable/black_primary_selector"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/texstViews13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-15dp"
+                                android:textSize="10sp"
+                                android:text="PQRS"
+                                app:layout_constraintEnd_toEndOf="@+id/phone7tv"
+                                app:layout_constraintStart_toStartOf="@+id/phone7tv"
+                                app:layout_constraintTop_toBottomOf="@+id/phone7tv" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:id="@+id/phone8tv"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:text="8"
+                                android:textColor="@drawable/black_primary_selector"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/stextVsiew13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-15dp"
+                                android:textSize="10sp"
+                                android:text="TUV"
+
+                                app:layout_constraintEnd_toEndOf="@+id/phone8tv"
+                                app:layout_constraintStart_toStartOf="@+id/phone8tv"
+                                app:layout_constraintTop_toBottomOf="@+id/phone8tv" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:id="@+id/phone9tv"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:text="9"
+                                android:textColor="@drawable/black_primary_selector"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tesxtVsisew13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-15dp"
+                                android:textSize="10sp"
+                                android:text="DEF"
+
+                                app:layout_constraintEnd_toEndOf="@+id/phone9tv"
+                                app:layout_constraintStart_toStartOf="@+id/phone9tv"
+                                app:layout_constraintTop_toBottomOf="@+id/phone9tv" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:id="@+id/phoneAsterisktv"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:text="*"
+                                android:textColor="@drawable/black_primary_selector"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textView13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-15dp"
+                                android:textSize="10sp"
+                                android:text=","
+                                app:layout_constraintEnd_toEndOf="@+id/phoneAsterisktv"
+                                app:layout_constraintStart_toStartOf="@+id/phoneAsterisktv"
+                                app:layout_constraintTop_toBottomOf="@+id/phoneAsterisktv" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:id="@+id/phone0tv"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:text="0"
+                                android:textColor="@drawable/black_primary_selector"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/textVsiew1s3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-15dp"
+                                android:textSize="10sp"
+                                android:text="+"
+
+                                app:layout_constraintEnd_toEndOf="@+id/phone0tv"
+                                app:layout_constraintStart_toStartOf="@+id/phone0tv"
+                                app:layout_constraintTop_toBottomOf="@+id/phone0tv" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:id="@+id/phoneNumberSigntv"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:clickable="true"
+                                android:gravity="center"
+                                android:paddingBottom="5dp"
+                                android:text="#"
+                                android:textColor="@drawable/black_primary_selector"
+                                android:textSize="25sp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tesxtVsisesw13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-15dp"
+                                android:textSize="10sp"
+                                android:text=","
+
+                                app:layout_constraintEnd_toEndOf="@+id/phoneNumberSigntv"
+                                app:layout_constraintStart_toStartOf="@+id/phoneNumberSigntv"
+                                app:layout_constraintTop_toBottomOf="@+id/phoneNumberSigntv" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/phoneClosetv"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:text="close"
+                            android:textColor="@drawable/black_primary_selector"
+                            android:textSize="18sp" />
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageButton
+                                android:id="@+id/callBtn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/bg_circle_primary"
+                                android:padding="5dp"
+                                android:src="@drawable/ic_baseline_call_24_white"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <ImageButton
+                                android:id="@+id/deleteBtn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/grey_btn_ripple_circle"
+                                android:paddingLeft="9dp"
+                                android:paddingTop="19dp"
+                                android:paddingRight="16dp"
+                                android:paddingBottom="19dp"
+                                android:src="@drawable/ic_delete_button"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
