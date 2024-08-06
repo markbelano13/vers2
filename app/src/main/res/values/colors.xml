@@ -5,12 +5,12 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#091B1A</color>
+    <color name="black">#131200</color>
     <color name="grey">#626262</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bg_white">#E6E6E6</color>
     <color name="dark_white">#CABABA</color>
-    <color name="primary">#F27B57</color>
+    <color name="primary">#52528C</color>
     <color name="primary_2">#a9573d</color>
     <color name="yellow_green">#26F414</color>
     <color name="red_blue">#842A50</color>
@@ -23,4 +23,5 @@
     <color name="selection_highlight">#aaaaaa</color>
     <color name="selection_focus">#eeaa55</color>
     <color name="item_normal">#eeeeee</color>
+    <color name="mtrl_textinput_default_box_stroke_color">@color/primary</color>
 </resources>

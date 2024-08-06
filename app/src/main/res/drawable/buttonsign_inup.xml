@@ -12,7 +12,7 @@ android:color="#1FF50000">
   <shape android:shape="rectangle">
     <!-- put your background color here-->
     <solid android:color="@color/primary" />
-    <corners android:radius="10dp" />
+    <corners android:radius="5dp" />
   </shape>
 </item>
 

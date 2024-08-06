@@ -50,7 +50,7 @@ public class Sign_in extends AppCompatActivity {
     private static final String TAG = "Sign_up";
     Dialog dialog;
     TextView dialogOkay, dialogTitle, dialogInfo;
-    Button signInBtn,googleBtn;
+    Button signInBtn;
     FirebaseFirestore db;
     LottieAnimationView buttonAnimation;
     boolean offlineMode=false;
@@ -58,7 +58,7 @@ public class Sign_in extends AppCompatActivity {
     Runnable connectivityCheckRunnable;
     FirebaseAuth mAuth;
     FirebaseUser user;
-    TextView creatAccTV, usernameErrTV, passErrTV, forgotPass;
+    TextView creatAccTV;
     GoogleSignInClient googleSignInClient;
     CollectionReference collection;
     EditText username, password;
@@ -128,7 +128,6 @@ public class Sign_in extends AppCompatActivity {
                 .requestEmail()
                 .build();
         googleSignInClient = GoogleSignIn.getClient(this,options);
-        googleBtn= findViewById(R.id.BTNgoogle);
 
 
         signInLayout= findViewById(R.id.signInLayout);
@@ -146,9 +145,6 @@ public class Sign_in extends AppCompatActivity {
         buttonAnimation=findViewById(R.id.BTNloading);
         username = findViewById(R.id.ETusername);
         password = findViewById(R.id.ETpass);
-        usernameErrTV = findViewById(R.id.TVusernameErr);
-        passErrTV=findViewById(R.id.TVpassErr);
-        forgotPass= findViewById(R.id.TVforgot);
 
         String email=getIntent().getStringExtra("email");
         if(email!=null){
@@ -172,25 +168,6 @@ public class Sign_in extends AppCompatActivity {
 
         });
 
-        googleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = googleSignInClient.getSignInIntent();
-                startActivityForResult(intent,1234);
-            }
-        });
-
-        forgotPass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ForgotPassActivity.class);
-                if(!username.getText().toString().trim().isEmpty()){
-                    intent.putExtra("email",username.getText().toString().trim());
-                }
-                startActivity(intent);
-                finish();
-            }
-        });
 
 
         creatAccTV.setOnClickListener(new View.OnClickListener() {
@@ -204,7 +181,7 @@ public class Sign_in extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
-                    usernameErrTV.setVisibility(View.GONE);
+                    username.setError(null);
                 }
             }
         });
@@ -213,7 +190,7 @@ public class Sign_in extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
-                    passErrTV.setVisibility(View.GONE);
+                    password.setError(null);
                 }
             }
         });
@@ -223,7 +200,7 @@ public class Sign_in extends AppCompatActivity {
         password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                passErrTV.setVisibility(View.GONE);
+                password.setError(null);
             }
         });
 
@@ -238,13 +215,12 @@ public class Sign_in extends AppCompatActivity {
 
 
                 if(username.getText().toString().trim().isEmpty() || password.getText().toString().trim().isEmpty()){
-                    usernameErrTV.setVisibility(username.getText().toString().trim().isEmpty()?View.VISIBLE:View.GONE);
-                    passErrTV.setVisibility(password.getText().toString().trim().isEmpty()?View.VISIBLE:View.GONE);
+                    username.setError(password.getText().toString().trim().isEmpty()?"Required*":null);
+                    password.setError(password.getText().toString().trim().isEmpty()?"Required*":null);
                 }
                 else if(pass.length()<6){
                     if(pass.length()<6){
-                        passErrTV.setText("Password must be atleast 6 characters long*");
-                        passErrTV.setVisibility(View.VISIBLE);
+                        password.setError("Password must be atleast 6 characters long*");
                     }
                 }else if(!username.getText().toString().trim().isEmpty() && !password.getText().toString().trim().isEmpty()){
                     playLoadingAnim();
@@ -458,7 +434,7 @@ public class Sign_in extends AppCompatActivity {
     public void viewCameraPermission(){
         ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.CAMERA},100);
     }
-    
+
 
     public void viewStoragePermission(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -480,10 +456,10 @@ public class Sign_in extends AppCompatActivity {
         if (hasFocus) {
             switch (editText.getId()) {
                 case R.id.ETusername:
-                    usernameErrTV.setVisibility(View.GONE);
+                    username.setError(null);
                     break;
                 case R.id.ETpass:
-                    passErrTV.setVisibility(View.GONE);
+                    password.setError(null);
                     break;
 
             }

@@ -65,9 +65,7 @@ public class Sign_up extends AppCompatActivity {
 
 
     private static final String TAG = "Sign_up";
-    EditText fName, mName, lName, suffix, age,contact,address,email,pass,conPass;
-    TextView fNameErr, mNameErr,lNameErr,suffixErr, ageErr,contactErr,addressErr,emailErr,passErr,conPassErr;
-    TextInputLayout emailLayout, passLayout, conPassLayout;
+    EditText email,pass,conPass;
     Button signUpBtn;
     Dialog dialog;
     TextView dialogOkay, dialogTitle, dialogInfo;
@@ -80,7 +78,6 @@ public class Sign_up extends AppCompatActivity {
     int signInRetries=0;
     String userId;
     GoogleSignInClient googleSignInClient;
-    Button googleSignUp;
     private static final int REQ_ONE_TAP = 2;  // Can be any integer unique to the Activity.
     private boolean showOneTapUI = true;
     String signUpMethod="email";
@@ -88,10 +85,7 @@ public class Sign_up extends AppCompatActivity {
     FirebaseDatabase firebaseDB;
     boolean cameraPermissionDialog=false, userDataExist=false;
     private DialogHelper dialogHelper;
-    CountryCodePicker ccp;
     String dialogAction="";
-    CheckBox privacyCheckedTextView;
-    TextView checkboxErr, checkboxText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,75 +111,22 @@ public class Sign_up extends AppCompatActivity {
 
         loginAccTV = (TextView)findViewById(R.id.TVloginAcc);
         signUpBtn =  findViewById(R.id.BTNsignup);
-        googleSignUp= findViewById(R.id.BTNgoogleSignup);
 
         buttonAnimation=findViewById(R.id.BTNSign_upLoading);
-        fName = findViewById(R.id.ETfNameSignup);
-        mName= findViewById(R.id.ETmInitialSignup);
-        lName= findViewById(R.id.ETlNameSignup);
-        suffix= findViewById(R.id.ETSuffixSignup);
-        age= findViewById(R.id.ETAgeSignup);
-        contact= findViewById(R.id.ETContactSignup);
-        address= findViewById(R.id.ETAddressSignup);
         email= findViewById(R.id.ETemailSignup);
         pass= findViewById(R.id.ETpassSignup);
         conPass= findViewById(R.id.ETconPassSignup);
-        emailLayout=findViewById(R.id.ETemailSignupLayout);
-        passLayout= findViewById(R.id.ETpassSignupLayout);
-        conPassLayout= findViewById(R.id.ETconPassSignupLayout);
-        privacyCheckedTextView=findViewById(R.id.checkedTextView);
-        checkboxErr=findViewById(R.id.checkboxErr);
-        checkboxText=findViewById(R.id.checkboxText);
 
-        fNameErr=findViewById(R.id.TVFNameErr);
-        mNameErr=findViewById(R.id.TVMNameErr);
-        lNameErr=findViewById(R.id.TVLNameErr);
-        ageErr=findViewById(R.id.TVAgeErr);
-        addressErr=findViewById(R.id.TVAddressErr);
-        contactErr=findViewById(R.id.TVContactErr);
-        emailErr=findViewById(R.id.TVEmailErr);
-        passErr=findViewById(R.id.TVPassErrSignUp);
-        conPassErr=findViewById(R.id.TVConPassErr);
 
-        fName.setOnFocusChangeListener((v, hasFocus) -> handleEditTextFocusChange(fName, hasFocus));
-        lName.setOnFocusChangeListener((v, hasFocus) -> handleEditTextFocusChange(lName, hasFocus));
-        age.setOnFocusChangeListener((v, hasFocus) -> handleEditTextFocusChange(age, hasFocus));
-        address.setOnFocusChangeListener((v, hasFocus) -> handleEditTextFocusChange(address, hasFocus));
-        contact.setOnFocusChangeListener((v, hasFocus) -> handleEditTextFocusChange(contact, hasFocus));
+
+
         email.setOnFocusChangeListener((v, hasFocus) -> handleEditTextFocusChange(email, hasFocus));
         pass.setOnFocusChangeListener((v, hasFocus) -> handleEditTextFocusChange(pass, hasFocus));
         conPass.setOnFocusChangeListener((v, hasFocus) -> handleEditTextFocusChange(conPass, hasFocus));
 
-        ccp = findViewById(R.id.ccp);
-        ccp.hideNameCode(true);
 
-        final SpannableStringBuilder sb = new SpannableStringBuilder("I have read and agreed to StayAlert's Privacy and Policy");
 
-        @SuppressLint("ResourceAsColor") final ForegroundColorSpan fcs = new ForegroundColorSpan(R.color.primary);
 
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.fragment_container, new PrivacyPolicyFrag());
-                fragmentTransaction.commit();
-            }
-        };
-
-        sb.setSpan(fcs, 38, 56, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        sb.setSpan(clickableSpan, 38, 56, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        checkboxText.setText(sb);
-        checkboxText.setMovementMethod(LinkMovementMethod.getInstance());
-
-        privacyCheckedTextView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(privacyCheckedTextView.isChecked()){
-                    checkboxErr.setVisibility(View.GONE);
-                }
-            }
-        });
 
         dialogHelper = new DialogHelper(Sign_up.this, new DialogHelper.DialogClickListener() {
             @Override
@@ -215,17 +156,7 @@ public class Sign_up extends AppCompatActivity {
         });
 
 
-        googleSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                auth.signOut();
-                googleSignInClient.signOut();
-                if(!email.isEnabled()){creatAccountWithEmail();}
-                Intent intent = googleSignInClient.getSignInIntent();
-                startActivityForResult(intent,1234);
-            }
 
-        });
 
 
 
@@ -236,124 +167,76 @@ public class Sign_up extends AppCompatActivity {
 
                 Map<String, Object> userData = new HashMap<>();
 
-                userData.put("first_name", fName.getText().toString().trim());
-                userData.put("middle_name", mName.getText().toString().trim().isEmpty() ? "" : mName.getText().toString());
-                userData.put("last_name", lName.getText().toString().trim());
-                userData.put("suffix", suffix.getText().toString().trim().isEmpty() ? "" : suffix.getText().toString());
-                userData.put("contact", contact.getText().toString().replace(" ", ""));
-                userData.put("address", address.getText().toString().trim());
-                userData.put("age", age.getText().toString().trim());
+                userData.put("first_name", "");
+                userData.put("middle_name", "");
+                userData.put("last_name", "");
+                userData.put("suffix", "");
+                userData.put("contact", "");
+                userData.put("address", "");
+                userData.put("age", "");
                 userData.put("email", email.getText().toString().trim());
                 userData.put("password", pass.getText().toString());
                 userData.put("sign_in_method", signUpMethod);
                 userData.put("last_sign_in", new Date());
 
 
-                if(!fName.getText().toString().trim().isEmpty()  && !lName.getText().toString().trim().isEmpty()
-                        && !address.getText().toString().trim().isEmpty() && !age.getText().toString().trim().isEmpty() && !contact.getText().toString().trim().isEmpty()
-                        && !email.getText().toString().trim().isEmpty()  && (!pass.getText().toString().trim().isEmpty() || passLayout.getVisibility()==View.GONE)
-                        && (!conPass.getText().toString().trim().isEmpty() || conPassLayout.getVisibility()==View.GONE)){
-                    if(!ccp.isValid()){
-                        contactErr.setText("Invalid contact number");
-                        contactErr.setVisibility(View.VISIBLE);
-                    }
-                    else if((pass.getText().toString().trim().length()<6 || conPass.getText().toString().trim().length()<6 ||
+                if(!email.getText().toString().trim().isEmpty()  && !pass.getText().toString().trim().isEmpty()
+                        && !conPass.getText().toString().trim().isEmpty()){
+                    if((pass.getText().toString().trim().length()<6 || conPass.getText().toString().trim().length()<6 ||
                             !Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) && signUpMethod.equals("email")){
                         if(!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()){
-                            emailErr.setText("Invalid email*");
-                            emailErr.setVisibility(View.VISIBLE);
+                            email.setError("Invalid email*");
                         }
                         if(pass.getText().toString().trim().length()<6 ){
-                            passErr.setText("Password must be atleast 6 characters long*");
-                            passErr.setVisibility(View.VISIBLE);
+                            pass.setError("Password must be atleast 6 characters long*");
                         }
                         if(conPass.getText().toString().trim().length()<6 ){
-                            conPassErr.setText("Password must be atleast 6 characters long*");
-                            conPassErr.setVisibility(View.VISIBLE);
+                            conPass.setError("Password must be atleast 6 characters long*");
                         }
 
 
                     }else if(pass.getText().toString().trim().equals(conPass.getText().toString().trim())){
 
-                        if(privacyCheckedTextView.isChecked()){
-                            playLoadingAnim();
-                            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putBoolean("isPrivacyPolicyAccepted", true); // Storing a boolean value with key "isAccepted"
-                            editor.apply();
-
-                            if(signInRetries<3){
-                                firebaseDB.isContactUnique(contact.getText().toString().replace(" ", ""), new FirebaseDatabase.OnInterfaceListener() {
-                                    @Override
-                                    public void onInterfaceCheckResult(boolean isTrue,String errorMessage){
-                                        if(isTrue){
-                                            switch (signUpMethod){
-                                                case "email":
-                                                    auth.createUserWithEmailAndPassword(email.getText().toString().trim(),pass.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<AuthResult> task) {
-                                                            if(task.isSuccessful()){
-                                                                createUserInfo(userData);
-                                                            }
-                                                            else if (task.getException().getLocalizedMessage().contains("email address is already in use")){
-                                                                // If sign in fails, handle different error scenarios
-                                                                dialogAction="signInEmail";
-                                                                dialogHelper.signInDialog();
-                                                                dialogHelper.showDialog("Sign in Failed","Account already exist");
-                                                                hideLoading();
-                                                            }
-                                                            else if (task.getException().getLocalizedMessage().contains("network error")){
-                                                                // If sign in fails, handle different error scenarios
-                                                                dialogHelper.showDialog("Sign in Failed", "No connection to the database");
-                                                                hideLoading();
-                                                            }else{
-                                                                System.out.println("task "+task.getException().getLocalizedMessage());
-                                                                dialogHelper.showDialog("Sign in Failed", firebaseDB.failureDialog(task));
-                                                                hideLoading();
-                                                            }
-                                                        }
-                                                    });
-                                                    break;
-                                                case "google":
-                                                    createUserInfo(userData);
-                                                    break;
-                                            }
-
-                                        }else{
-                                            dialogHelper.showDialog("Sign in Failed","Contact number already taken");
-                                            hideLoading();
-                                        }
+                        if(signInRetries<3){
+                            auth.createUserWithEmailAndPassword(email.getText().toString().trim(),pass.getText().toString().trim()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()){
+                                        createUserInfo(userData);
                                     }
-                                });
-                            }
-                            else{
-                                dialogHelper.showDialog("Sign up Failed","Too much requests, please try again later");
-                            }
-                        }else{
-                            checkboxErr.setVisibility(View.VISIBLE);
+                                    else if (task.getException().getLocalizedMessage().contains("email address is already in use")){
+                                        // If sign in fails, handle different error scenarios
+                                        dialogAction="signInEmail";
+                                        dialogHelper.signInDialog();
+                                        dialogHelper.showDialog("Sign in Failed","Account already exist");
+                                        hideLoading();
+                                    }
+                                    else if (task.getException().getLocalizedMessage().contains("network error")){
+                                        // If sign in fails, handle different error scenarios
+                                        dialogHelper.showDialog("Sign in Failed", "No connection to the database");
+                                        hideLoading();
+                                    }else{
+                                        System.out.println("task "+task.getException().getLocalizedMessage());
+                                        dialogHelper.showDialog("Sign in Failed", firebaseDB.failureDialog(task));
+                                        hideLoading();
+                                    }
+                                }
+                            });
+                        }
+                        else{
+                            dialogHelper.showDialog("Sign up Failed","Too much requests, please try again later");
                         }
                     }
                     else{
-                        passErr.setText("Password do not match*");
-                        conPassErr.setText("Password do not match*");
-                        passErr.setVisibility(View.VISIBLE);
-                        conPassErr.setVisibility(View.VISIBLE);
+                        pass.setError("Password do not match*");
+                        conPass.setError("Password do not match*");
                     }
                 }
                 else{
-                    fNameErr.setVisibility(fName.getText().toString().trim().isEmpty()?View.VISIBLE:View.GONE);
-                    lNameErr.setVisibility(lName.getText().toString().trim().isEmpty()?View.VISIBLE:View.GONE);
-                    ageErr.setVisibility(age.getText().toString().trim().isEmpty()?View.VISIBLE:View.GONE);
-                    contactErr.setText("Required");
-                    contactErr.setVisibility(contact.getText().toString().trim().isEmpty()?View.VISIBLE:View.GONE);
-                    addressErr.setVisibility(address.getText().toString().trim().isEmpty()?View.VISIBLE:View.GONE);
-                    emailErr.setVisibility(email.getText().toString().trim().isEmpty()?View.VISIBLE:View.GONE);
-                    passErr.setVisibility(pass.getText().toString().trim().isEmpty()?View.VISIBLE:View.GONE);
-                    conPassErr.setVisibility(conPass.getText().toString().trim().isEmpty()?View.VISIBLE:View.GONE);
-                    passErr.setText("Requried*");
-                    conPassErr.setText("Requried*");
-                    emailErr.setText("Requried*");
 
+                    email.setError(email.getText().toString().trim().isEmpty()?"Requried*":null);
+                    pass.setError(pass.getText().toString().trim().isEmpty()?"Requried*":null);
+                    conPass.setError(conPass.getText().toString().trim().isEmpty()?"Requried*":null);
                 }
 
 
@@ -511,21 +394,21 @@ public class Sign_up extends AppCompatActivity {
     }
 
     public void createAccountWithGoogle(String email){
-        passLayout.setVisibility(View.GONE);
-        conPassLayout.setVisibility(View.GONE);
-        this.email.setText(email);
-        emailLayout.setEnabled(false);
-        signUpMethod="google";
-        dialogHelper.showDialog("Register Account","Set up your account information");
+//        passLayout.setVisibility(View.GONE);
+//        conPassLayout.setVisibility(View.GONE);
+//        this.email.setText(email);
+//        emailLayout.setEnabled(false);
+//        signUpMethod="google";
+//        dialogHelper.showDialog("Register Account","Set up your account information");
 
     }
 
     private  void creatAccountWithEmail(){
-        passLayout.setVisibility(View.VISIBLE);
-        conPassLayout.setVisibility(View.VISIBLE);
-        this.email.setText("");
-        emailLayout.setEnabled(true);
-        signUpMethod="email";
+//        passLayout.setVisibility(View.VISIBLE);
+//        conPassLayout.setVisibility(View.VISIBLE);
+//        this.email.setText("");
+//        emailLayout.setEnabled(true);
+//        signUpMethod="email";
     }
 
 
@@ -570,39 +453,18 @@ public class Sign_up extends AppCompatActivity {
     private void handleEditTextFocusChange(EditText editText, boolean hasFocus) {
         if (hasFocus) {
             switch (editText.getId()) {
-                case R.id.ETfNameSignup:
-                    fNameErr.setVisibility(View.GONE);
-                    break;
-                case R.id.ETlNameSignup:
-                    lNameErr.setVisibility(View.GONE);
-                    break;
-                case R.id.ETAgeSignup:
-                    ageErr.setVisibility(View.GONE);
-                    break;
-                case R.id.ETContactSignup:
-                    contact.setHintTextColor(ContextCompat.getColor(this,R.color.selection_highlight));
-                    ccp.registerPhoneNumberTextView(contact);
-                    contactErr.setVisibility(View.GONE);
-                    break;
-                case R.id.ETAddressSignup:
-                    addressErr.setVisibility(View.GONE);
-                    break;
                 case R.id.ETemailSignup:
-                    emailErr.setVisibility(View.GONE);
+                    email.setError(null);
                     break;
                 case R.id.ETpassSignup:
-                    passErr.setVisibility(View.GONE);
-                    passErr.setText("Required*");
+                    pass.setError(null);
+                    pass.setError("Required*");
                     break;
                 case R.id.ETconPassSignup:
-                    conPassErr.setVisibility(View.GONE);
-                    conPassErr.setText("Required*");
+                    conPass.setError(null);
+                    conPass.setError("Required*");
                     break;
 
-            }
-        }else{
-            if(editText.getId()==R.id.ETContactSignup){
-                contact.setHintTextColor(Color.parseColor("#F1F4FF"));
             }
         }
     }
