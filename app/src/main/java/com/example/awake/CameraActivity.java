@@ -83,6 +83,7 @@ import com.example.awake.env.Logger;
 import com.example.awake.env.Utils;
 import com.example.awake.tflite.Classifier;
 import com.example.awake.tflite.YoloV5Classifier;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -116,7 +117,7 @@ public abstract class CameraActivity extends AppCompatActivity
         View.OnClickListener {
 
 
-  MeowBottomNavigation bottomNavigation;
+  BottomNavigationView bottomNav;
   public static int bottomNavIndex=3;
   private static final Logger LOGGER = new Logger();
   private static final String TAG = "CameraActivity";
@@ -282,16 +283,14 @@ public abstract class CameraActivity extends AppCompatActivity
     ringtone = RingtoneManager.getRingtone(CameraActivity.this, defaultRingtoneUri);
 
 
-    bottomNavigation= findViewById(R.id.bottomNavigation);
     backBtn= findViewById(R.id.backBtn);
     geocoder = new Geocoder(this, Locale.getDefault());
 
+    bottomNav = findViewById(R.id.bottomNavigationView);
+    bottomNav.setBackground(null);
 
-    bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.ic_menu));
-    bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.ic_call));
-    bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.ic_home));
-    bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.ic_stats));
-    bottomNavigation.add(new MeowBottomNavigation.Model(5, R.drawable.ic_profile));
+
+
 
 
     vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -429,46 +428,35 @@ public abstract class CameraActivity extends AppCompatActivity
     scanHandler.post(mouthRunnable);
 
 
+    bottomNav.setOnItemSelectedListener(item -> {
+      switch (item.getItemId()) {
+        case R.id.map:
+          bottomNavIndex=2;
+//          addFragment(new HomeFrag());
+          Toast.makeText(CameraActivity.this, "Map", Toast.LENGTH_SHORT).show();
+          break;
+        case R.id.phone:
+          bottomNavIndex=2;
+          addFragment(new PhoneFrag());
+          Toast.makeText(CameraActivity.this, "Phone", Toast.LENGTH_SHORT).show();
+          break;
+        case R.id.detect:
 
-
-    bottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
-      @Override
-      public Unit invoke(MeowBottomNavigation.Model model) {
-        switch (model.getId()){
-          case 1:
-            bottomNavIndex=1;
-            addFragment(new MenuFrag());
-            HomeFrag.notifIcon.setEnabled(false);
-            Toast.makeText(CameraActivity.this, "Menu", Toast.LENGTH_SHORT).show();
-            break;
-          case 2:
-            bottomNavIndex=2;
-            addFragment(new PhoneFrag());
-            Toast.makeText(CameraActivity.this, "Phone", Toast.LENGTH_SHORT).show();
-            break;
-          case 3:
-            bottomNavIndex=3;
-            addFragment(new HomeFrag());
-            HomeFrag.notifIcon.setEnabled(true);
-            Toast.makeText(CameraActivity.this, "Home", Toast.LENGTH_SHORT).show();
-
-
-            break;
-          case 4:
-            bottomNavIndex=4;
-            addFragment(new StatsFrag());
-            Toast.makeText(CameraActivity.this, "Stats", Toast.LENGTH_SHORT).show();
-
-            break;
-          case 5:
-            bottomNavIndex=5;
-            addFragment(new ProfileFrag());
-            Toast.makeText(CameraActivity.this, "Profile", Toast.LENGTH_SHORT).show();
-            break;
-        }
-        return null;
+          break;
+        case R.id.stats:
+          bottomNavIndex=4;
+          addFragment(new StatsFrag());
+          Toast.makeText(CameraActivity.this, "Stats", Toast.LENGTH_SHORT).show();
+          break;
+        case R.id.profile:
+          bottomNavIndex=5;
+          addFragment(new ProfileFrag());
+          Toast.makeText(CameraActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+          break;
       }
+      return true;
     });
+
 
     backBtn.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -687,9 +675,9 @@ public abstract class CameraActivity extends AppCompatActivity
       public void onSuccess(DocumentSnapshot documentSnapshot) {
         Log.d(TAG, "DocumentSnapshot datas: " + documentSnapshot.getData());
         userInfo = documentSnapshot.getData();
-        bottomNavigation.show(3,true);
-        addFragment(new HomeFrag());
-        bottomNavigation.clearCount(1);
+        bottomNav.setSelectedItemId(R.id.stats);
+        addFragment(new StatsFrag());
+//        bottomNavigation.clearCount(1);
 
         chartGenerator = new ChartGenerator();
         chartGenerator.setRange("yesterday");
@@ -713,9 +701,9 @@ public abstract class CameraActivity extends AppCompatActivity
       public void onFailure(Exception e) {
         Log.d(TAG,"Failed getting user info: "+e);
         Toast.makeText(CameraActivity.this, "Unable to load user information", Toast.LENGTH_SHORT).show();
-        bottomNavigation.show(3,true);
+        bottomNav.setSelectedItemId(R.id.stats);
         addFragment(new HomeFrag());
-        bottomNavigation.clearCount(1);
+//        bottomNavigation.clearCount(1);
       }
     });
 
@@ -1072,10 +1060,7 @@ public abstract class CameraActivity extends AppCompatActivity
         HomeFrag.minimizeMap();
       }else{
 
-        if(bottomNavIndex==3 && backStackEntryCount > 0 && !(lastFragment instanceof HomeFrag)){
-          HomeFrag.minimizeMap();
-          return;
-        }
+
 
         for (int i = 0; i < backStackEntryCount - 1; i++) {
           fragmentManager.popBackStack();

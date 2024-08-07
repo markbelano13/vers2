@@ -415,7 +415,7 @@ public class HomeFrag extends Fragment {
             @Override
             public void onClick(View v) {
                 cameraActivity.bottomNavIndex=4;
-                cameraActivity.bottomNavigation.show(4,true);
+//                cameraActivity.bottomNavigation.show(4,true);
                 cameraActivity.addFragment(new StatsFrag());
             }
         });
@@ -424,6 +424,7 @@ public class HomeFrag extends Fragment {
 
 
         timeofDay.setText("Good "+getTimeOfDay());
+        maximizeMap();
 
 
         closeMap.setOnClickListener(v -> {
