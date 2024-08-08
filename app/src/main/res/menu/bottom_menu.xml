@@ -14,7 +14,7 @@
     <item
         android:id="@+id/detect"
         android:title=""
-        android:enabled="true"/>
+        android:enabled="false"/>
 
     <item
         android:id="@+id/stats"

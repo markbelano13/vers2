@@ -361,6 +361,8 @@ public class HomeFrag extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        Log.d("Startup","Home Fragment Added");
+
         firebaseDB = new FirebaseDatabase();
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
@@ -448,7 +450,6 @@ public class HomeFrag extends Fragment {
         focusLocationBtn = view.findViewById(R.id.focusLocation);
         setRoute = view.findViewById(R.id.setRoute);
         mapboxManeuverView = view.findViewById(R.id.maneuverView);
-
 
 
         maneuverApi = new MapboxManeuverApi(new MapboxDistanceFormatter(new DistanceFormatterOptions.Builder(CameraActivity.context).build()));

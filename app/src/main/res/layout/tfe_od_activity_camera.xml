@@ -15,8 +15,6 @@
         android:background="#000000">
 
 
-
-
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
@@ -26,17 +24,13 @@
             tools:context="org.tensorflow.demo.CameraActivity">
 
 
-
-
-
         </FrameLayout>
 
         <FrameLayout
             android:id="@+id/frame_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/bottomNavigation"
-            android:layout_marginBottom="-23dp"
+            android:layout_marginBottom="40dp"
             android:elevation="1dp">
 
         </FrameLayout>
@@ -62,46 +56,16 @@
             android:layout_marginEnd="20dp"
             app:srcCompat="@drawable/ic_back_home" />
 
-<!--        <Button-->
-<!--            android:id="@+id/backBtn"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:minHeight="0dp" -->
-<!--            android:minWidth="0dp"-->
-<!--            android:paddingVertical="1dp"-->
-<!--            android:layout_alignParentStart="true"-->
-<!--            android:layout_marginStart="10dp"-->
-<!--            android:layout_marginTop="10dp"-->
-<!--            android:text="< Back"-->
-<!--            android:textAllCaps="false"-->
-
-<!--            android:visibility="visible" />-->
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/bg_white"></androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        <com.etebarian.meowbottomnavigation.MeowBottomNavigation-->
-<!--            android:id="@+id/bottomNavigation"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_alignParentBottom="true"-->
-<!--            android:elevation="2dp"-->
-<!--            android:visibility="gone"-->
-<!--            app:mbn_backgroundBottomColor="#ffffff"-->
-<!--            app:mbn_circleColor="@color/primary"-->
-<!--            app:mbn_countBackgroundColor="#ff6f00"-->
-<!--            app:mbn_countTextColor="#ffffff"-->
-<!--            app:mbn_defaultIconColor="@color/primary"-->
-<!--            app:mbn_rippleColor="#2f424242"-->
-<!--            app:mbn_selectedIconColor="@color/white"-->
-<!--            app:mbn_shadowColor="#1f212121" />-->
+
 
 
     </RelativeLayout>
-
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
@@ -122,13 +86,17 @@
             app:menu="@menu/bottom_menu" />
     </com.google.android.material.bottomappbar.BottomAppBar>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/viewDetection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:enabled="true"
+        android:clickable="true"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_eye_tracking"
         app:layout_anchor="@id/bottomAppBar"
         app:maxImageSize="40dp"
         app:tint ="@color/primary"/>
+
 
 
     <include

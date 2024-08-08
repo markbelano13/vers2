@@ -83,8 +83,10 @@ import com.example.awake.env.Logger;
 import com.example.awake.env.Utils;
 import com.example.awake.tflite.Classifier;
 import com.example.awake.tflite.YoloV5Classifier;
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -118,7 +120,7 @@ public abstract class CameraActivity extends AppCompatActivity
 
 
   BottomNavigationView bottomNav;
-  public static int bottomNavIndex=3;
+  public static int bottomNavIndex=0;
   private static final Logger LOGGER = new Logger();
   private static final String TAG = "CameraActivity";
   private static final int PERMISSIONS_REQUEST = 1;
@@ -240,6 +242,9 @@ public abstract class CameraActivity extends AppCompatActivity
   public static boolean canAlarm=false;
   public List<Date> alarmList= new ArrayList<>(Arrays.asList(new Date[3]));
 
+  FloatingActionButton viewDetection;
+  BottomAppBar bottomAppBar;
+
 
 
   @Override
@@ -288,6 +293,8 @@ public abstract class CameraActivity extends AppCompatActivity
 
     bottomNav = findViewById(R.id.bottomNavigationView);
     bottomNav.setBackground(null);
+    viewDetection = findViewById(R.id.viewDetection);
+    bottomAppBar = findViewById(R.id.bottomAppBar);
 
 
 
@@ -431,30 +438,48 @@ public abstract class CameraActivity extends AppCompatActivity
     bottomNav.setOnItemSelectedListener(item -> {
       switch (item.getItemId()) {
         case R.id.map:
-          bottomNavIndex=2;
-//          addFragment(new HomeFrag());
-          Toast.makeText(CameraActivity.this, "Map", Toast.LENGTH_SHORT).show();
+          if(bottomNavIndex!=1){
+            bottomNavIndex=1;
+            addFragment(new HomeFrag());
+            Toast.makeText(CameraActivity.this, "Map", Toast.LENGTH_SHORT).show();
+          }
           break;
         case R.id.phone:
-          bottomNavIndex=2;
-          addFragment(new PhoneFrag());
-          Toast.makeText(CameraActivity.this, "Phone", Toast.LENGTH_SHORT).show();
+          if(bottomNavIndex!=2){
+            bottomNavIndex=2;
+            addFragment(new PhoneFrag());
+            Toast.makeText(CameraActivity.this, "Phone", Toast.LENGTH_SHORT).show();
+          }
           break;
         case R.id.detect:
 
           break;
         case R.id.stats:
-          bottomNavIndex=4;
-          addFragment(new StatsFrag());
-          Toast.makeText(CameraActivity.this, "Stats", Toast.LENGTH_SHORT).show();
+          if(bottomNavIndex!=4){
+            bottomNavIndex=4;
+            addFragment(new StatsFrag());
+            Toast.makeText(CameraActivity.this, "Stats", Toast.LENGTH_SHORT).show();
+          }
           break;
         case R.id.profile:
-          bottomNavIndex=5;
-          addFragment(new ProfileFrag());
-          Toast.makeText(CameraActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+          if(bottomNavIndex!=5){
+            bottomNavIndex=5;
+            addFragment(new ProfileFrag());
+            Toast.makeText(CameraActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+          }
           break;
       }
       return true;
+    });
+
+    viewDetection.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        System.out.println("see scan");
+        elevation= 30;
+        changeFrameLayoutElevation();
+        canAlarm=true;
+      }
     });
 
 
@@ -675,8 +700,8 @@ public abstract class CameraActivity extends AppCompatActivity
       public void onSuccess(DocumentSnapshot documentSnapshot) {
         Log.d(TAG, "DocumentSnapshot datas: " + documentSnapshot.getData());
         userInfo = documentSnapshot.getData();
+        bottomNav.setSelectedItemId(R.id.map);
         bottomNav.setSelectedItemId(R.id.stats);
-        addFragment(new StatsFrag());
 //        bottomNavigation.clearCount(1);
 
         chartGenerator = new ChartGenerator();
@@ -702,7 +727,7 @@ public abstract class CameraActivity extends AppCompatActivity
         Log.d(TAG,"Failed getting user info: "+e);
         Toast.makeText(CameraActivity.this, "Unable to load user information", Toast.LENGTH_SHORT).show();
         bottomNav.setSelectedItemId(R.id.stats);
-        addFragment(new HomeFrag());
+        addFragment(new StatsFrag());
 //        bottomNavigation.clearCount(1);
       }
     });
@@ -1021,6 +1046,8 @@ public abstract class CameraActivity extends AppCompatActivity
     if(backBtn.getVisibility()==View.VISIBLE){
       elevation=0;
       backBtn.setVisibility(View.GONE);
+      bottomAppBar.setVisibility(View.VISIBLE);
+      viewDetection.setVisibility(View.VISIBLE);
       msTV.setElevation(elevation);
       frameLayout.setElevation(elevation);
       canAlarm= canAlarmGlobal;
@@ -1057,9 +1084,7 @@ public abstract class CameraActivity extends AppCompatActivity
 
       if((fragment instanceof HomeFrag && backStackEntryCount>1)){
         removeFragment();
-        HomeFrag.minimizeMap();
       }else{
-
 
 
         for (int i = 0; i < backStackEntryCount - 1; i++) {
@@ -1076,6 +1101,8 @@ public abstract class CameraActivity extends AppCompatActivity
 //      setWrapper(fragment);
 
     }
+
+
 
 
   }
@@ -1109,11 +1136,15 @@ public abstract class CameraActivity extends AppCompatActivity
     if (frameLayout != null) {
       frameLayout.setElevation(newElevation);
       if(newElevation>0){
+        bottomAppBar.setVisibility(View.GONE);
+        viewDetection.setVisibility(View.GONE);
         backBtn.setElevation(newElevation);
         backBtn.setVisibility(View.VISIBLE);
         msTV.setElevation(newElevation);
       }
       else{
+        bottomAppBar.setVisibility(View.VISIBLE);
+        viewDetection.setVisibility(View.VISIBLE);
         backBtn.setVisibility(View.GONE);
         msTV.setElevation(newElevation);
       }
