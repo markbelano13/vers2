@@ -1,5 +1,6 @@
 package com.example.awake;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -31,8 +32,11 @@ import com.google.firebase.firestore.Query;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import firebase.classes.FirebaseDatabase;
 
 public class StatsFrag extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -48,14 +52,18 @@ public class StatsFrag extends Fragment implements AdapterView.OnItemSelectedLis
     public static Spinner detectionResultsSpinner, detectionChartSpinner, detectionLogsSpinner;
      ImageButton detectionResultsImageButtonDD, detectionChartImageButtonDD, detectionLogsImageButtonDD;
     int count=0;
-    public static TextView drowsyCountTV, yawnCountTV, averageResponseTV;
+    public static TextView drowsyCountTV, yawnCountTV, userState, lastName, firstName;
     public static TextView timeRangeTV;
     public static  LineChart lineChart;
+    CircleImageView profileImage;
 
     private List<String> xValues= new ArrayList<>();
     ArrayList<Integer> drowsyList = new ArrayList<>();
     ArrayList<Integer> yawnList = new ArrayList<>();
     public static ChartGenerator chartGenerator;
+    Map<String, Object> userData = new HashMap<>();
+
+    FirebaseAuth auth;
 
 
 
@@ -78,8 +86,11 @@ public class StatsFrag extends Fragment implements AdapterView.OnItemSelectedLis
         detectionLogsSpinner=view.findViewById(R.id.detectionLogsSpinner);
         drowsyCountTV= view.findViewById(R.id.drowsyCountTV);
         yawnCountTV = view.findViewById(R.id.yawnCount);
-        averageResponseTV = view.findViewById(R.id.awakenessLevel);
+        userState = view.findViewById(R.id.awakenessLevel);
         timeRangeTV = view.findViewById(R.id.timeRangeStats);
+        lastName = view.findViewById(R.id.profileLastName);
+        firstName = view.findViewById(R.id.profileFirstName);
+        profileImage=view.findViewById(R.id.profilePicIVStat);
 
         instantiateAdapter(detectionResultsSpinner);
         instantiateAdapter(detectionChartSpinner);
@@ -90,6 +101,8 @@ public class StatsFrag extends Fragment implements AdapterView.OnItemSelectedLis
         detectionChartImageButtonDD = view.findViewById(R.id.detectionChartButton);
         detectionLogsImageButtonDD= view.findViewById(R.id.detectionLogsButton);
         lineChart = view.findViewById(R.id.detectionChart);
+
+        auth = FirebaseAuth.getInstance();
 
 
 
@@ -125,6 +138,32 @@ public class StatsFrag extends Fragment implements AdapterView.OnItemSelectedLis
                 detectionLogsSpinner.performClick();
             }
         });
+
+        userData= cameraActivity.userInfo;
+        if(!userData.isEmpty()){
+            firstName.setText(userData.get("first_name").toString() + " " + (userData.get("middle_name").toString().trim().isEmpty()?"":userData.get("middle_name")+".") );
+            lastName.setText(userData.get("last_name") + " " + userData.get("suffix"));
+//            HomeFrag. nameDriverTV.setText(userData.get("first_name").toString() + " " + userData.get("middle_name") + ". " + userData.get("last_name") + " " + userData.get("suffix"));
+//            profileAddress.setText(userData.get("address").toString());
+            //fixthis
+        }
+
+        Bitmap bitmap = firebaseDB.getImageFromLocal(cameraActivity, auth.getUid()+"/userRes","profile_pic.jpg");
+        if(bitmap!=null){
+            profileImage.setImageBitmap(bitmap);
+        }else{
+            firebaseDB.getImageFromServer("profile_pic.jpg",auth.getUid()+"/user_res",  new FirebaseDatabase.BitmapTaskCallback() {
+                @Override
+                public void onSuccess(Bitmap bitmap) {
+                    profileImage.setImageBitmap(bitmap);
+                }
+
+                @Override
+                public void onFailure(String errorMessage) {
+                    Log.w("ViewDetectionHelper", errorMessage);
+                }
+            });
+        }
 
 
         detectionLogsRV.setHasFixedSize(false);
@@ -286,7 +325,7 @@ public class StatsFrag extends Fragment implements AdapterView.OnItemSelectedLis
     }
 
     public static void updateDetectionRecords(){
-        averageResponseTV.setText(String.format("%.2f", CameraActivity.averageResponse)+"s");
+//        averageResponseTV.setText(String.format("%.2f", CameraActivity.averageResponse)+"s");
         drowsyCountTV.setText(CameraActivity.drowsyCount+"");
         yawnCountTV.setText(CameraActivity.yawnCountRes+"");
     }

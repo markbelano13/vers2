@@ -411,7 +411,7 @@ public abstract class CameraActivity extends AppCompatActivity
         }
 
         if(HomeFrag.statusDriverTV!=null){
-          HomeFrag.statusDriverTV.setText((statusDriver.contains("ACTIVE"))?statusDriverMouth:statusDriver);
+          StatsFrag.userState.setText((statusDriver.contains("ACTIVE"))?statusDriverMouth:statusDriver);
 
 
           if(HomeFrag.statusDriverTV.getText().toString().contains("ACTIVE")){

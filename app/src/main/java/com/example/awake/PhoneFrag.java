@@ -107,7 +107,7 @@ public class PhoneFrag extends Fragment implements View.OnClickListener {
 
 
 
-        displayContactList(CameraActivity.favoritesInfoList);
+        displayContactList(CameraActivity.contactInfoList);
 
         contactsTV.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceType")

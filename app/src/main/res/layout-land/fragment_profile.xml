@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6E6E6"
-    android:orientation="vertical"
     android:clickable="true"
     tools:context=".ProfileFrag">
 
     <!-- TODO: Update blank fragment layout -->
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:background="@drawable/background_app"
+        android:layout_marginTop="-25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,7 +64,7 @@
                         android:layout_marginLeft="25dp"
 
                         android:clickable="true"
-                        android:src="@drawable/asd"
+                        android:src="@drawable/default_profile_pic"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,7 +89,7 @@
                         android:layout_marginStart="12dp"
                         android:fontFamily="@font/nunito_sans"
                         android:text="Guest"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintStart_toEndOf="@+id/profilePicIV"
@@ -86,7 +102,7 @@
                         android:layout_marginStart="12dp"
                         android:fontFamily="@font/nunito_sans"
                         android:text=""
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="15sp"
                         app:layout_constraintStart_toEndOf="@+id/profilePicIV"
                         app:layout_constraintTop_toBottomOf="@+id/profileName" />
@@ -115,7 +131,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="17dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:layout_marginRight="17dp"
                         android:layout_marginBottom="5dp">
 
@@ -124,7 +140,7 @@
                             android:id="@+id/textView3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/nunito_regular"
+                            android:fontFamily="@font/rosario_reg"
                             android:text="Account Settings"
                             android:textColor="@color/primary"
                             android:textSize="18sp"
@@ -150,7 +166,7 @@
                             android:layout_marginLeft="17dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="6dp"
-                            android:fontFamily="@font/nunito_regular"
+                            android:fontFamily="@font/rosario_reg"
                             android:text="Edit Profile"
                             android:textColor="@color/black"
                             android:textSize="18sp"
@@ -599,7 +615,7 @@
                             android:layout_marginLeft="17dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="6dp"
-                            android:fontFamily="@font/nunito_regular"
+                            android:fontFamily="@font/rosario_reg"
                             android:text="Change Password"
                             android:textColor="@color/black"
                             android:textSize="18sp"
@@ -790,76 +806,6 @@
                         android:layout_height="match_parent"
                         android:orientation="vertical">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/profileLogout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/grey_btn_ripple"
-                            android:clickable="true">
-
-
-                            <TextView
-                                android:id="@+id/textVeiew33w"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="17dp"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="6dp"
-                                android:fontFamily="@font/nunito_regular"
-                                android:text="Logout"
-                                android:textColor="#FF0000"
-                                android:textSize="18sp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <ImageButton
-                                android:id="@+id/imageButtone2w"
-                                android:layout_width="wrap_content"
-                                android:layout_height="24dp"
-                                android:layout_marginRight="5dp"
-                                android:background="@drawable/grey_btn_ripple"
-                                android:src="@drawable/ic_sign_out_squre_light"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                tools:ignore="TouchTargetSizeCheck" />
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@drawable/bg_line_below"
-
-                            >
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/linearLayosut3"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="17dp"
-                            android:layout_marginTop="17dp"
-                            android:layout_marginRight="17dp"
-                            android:layout_marginBottom="5dp">
-
-
-                            <TextView
-                                android:id="@+id/texstView3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/nunito_regular"
-                                android:text="App Information"
-                                android:textColor="@color/primary"
-                                android:textSize="18sp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/profileToggleDetection"
@@ -876,7 +822,7 @@
                                 android:layout_marginLeft="17dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginBottom="6dp"
-                                android:fontFamily="@font/nunito_regular"
+                                android:fontFamily="@font/rosario_reg"
                                 android:text="Background Detection  Alarm"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
@@ -913,8 +859,8 @@
                                 android:layout_marginLeft="17dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginBottom="6dp"
-                                android:fontFamily="@font/nunito_regular"
-                                android:text="About the App"
+                                android:fontFamily="@font/rosario_reg"
+                                android:text="About Application"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -924,30 +870,42 @@
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/profileAppDevs"
+                            android:id="@+id/profileLogout"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
                             android:background="@drawable/grey_btn_ripple"
-                            android:clickable="true"
-                            android:visibility="visible">
-                            >
+                            android:clickable="true">
 
 
                             <TextView
-                                android:id="@+id/textVisew33w"
+                                android:id="@+id/textVeiew33w"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="17dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginBottom="6dp"
-                                android:fontFamily="@font/nunito_regular"
-                                android:text="App Developers"
-                                android:textColor="@color/black"
+                                android:fontFamily="@font/rosario_reg"
+                                android:text="Logout"
+                                android:textColor="#FF0000"
                                 android:textSize="18sp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageButton
+                                android:id="@+id/imageButtone2w"
+                                android:layout_width="wrap_content"
+                                android:layout_height="24dp"
+                                android:layout_marginRight="8dp"
+                                android:background="@drawable/grey_btn_ripple"
+                                android:src="@drawable/logout"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="TouchTargetSizeCheck" />
 
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -959,7 +917,7 @@
                             android:layout_marginBottom="10dp"
                             android:background="@drawable/grey_btn_ripple"
                             android:clickable="true"
-                            android:visibility="visible">
+                            android:visibility="gone">
                             >
 
 
@@ -970,7 +928,7 @@
                                 android:layout_marginLeft="17dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginBottom="6dp"
-                                android:fontFamily="@font/nunito_regular"
+                                android:fontFamily="@font/rosario_reg"
                                 android:text="Privacy Policy"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
@@ -980,6 +938,7 @@
 
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
+
                     </LinearLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -1038,4 +997,4 @@
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,22 +49,13 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="20dp">
 
-                <ImageView
-                    android:id="@+id/profileCam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:elevation="10dp"
-                    android:src="@drawable/ic_cam_edit"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="@+id/profilePicIV"
-                    app:layout_constraintEnd_toEndOf="@+id/profilePicIV" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profilePicIV"
-                    android:layout_width="100dp"
+                    android:id="@+id/profilePicIVStat"
+                    android:layout_width="90dp"
                     android:layout_height="100dp"
-                    android:layout_marginLeft="25dp"
 
+                    android:layout_marginStart="16dp"
                     android:clickable="true"
                     android:src="@drawable/default_profile_pic"
                     app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +76,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/profileName"
+                    android:id="@+id/profileFirstName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
@@ -98,7 +89,7 @@
                     app:layout_constraintTop_toTopOf="@+id/profilePicIV" />
 
                 <TextView
-                    android:id="@+id/profileAddress"
+                    android:id="@+id/profileLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
@@ -129,8 +120,23 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:spinnerMode="dropdown"
+                android:visibility="gone"
                 tools:layout_editor_absoluteX="407dp"
-                tools:layout_editor_absoluteY="22dp" />
+                tools:layout_editor_absoluteY="22dp"
+                tools:ignore="MissingConstraints" />
+
+            <ImageButton
+                android:id="@+id/detectionResultsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/grey_btn_ripple"
+                android:src="@drawable/ic_arrow_drop_down_black_24dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
 
             <TextView

@@ -15,6 +15,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="-25dp"
+            android:background="@drawable/background_app">
+
+        </FrameLayout>
+
     </FrameLayout>
 
     <LinearLayout
@@ -29,157 +37,83 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="17dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/background_frame">
+                android:gravity="center_vertical"
+                android:visibility="visible">
 
-
-                <Spinner
-                    android:id="@+id/detectionResultSpinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:spinnerMode="dropdown"
-                    app:layout_constraintBottom_toBottomOf="@+id/detectionResultsButton"
-                    app:layout_constraintEnd_toStartOf="@+id/detectionResultsButton"
-                    app:layout_constraintTop_toTopOf="@+id/detectionResultsButton" />
-
-                <ImageButton
-                    android:id="@+id/detectionResultsButton"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/grey_btn_ripple"
-                    android:src="@drawable/ic_arrow_drop_down_black_24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginBottom="0dp">
 
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:text="Detection Results"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:text="Drowsy:"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profilePicIVStat"
+                        android:layout_width="70dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="25dp"
 
-                <TextView
-                    android:id="@+id/drowsyCountTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:text="0"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView8"
-                    app:layout_constraintStart_toEndOf="@+id/textView8" />
+                        android:clickable="true"
+                        android:src="@drawable/default_profile_pic"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/textVisew8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginRight="5dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:text="Yawn:"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/yawnCount"
-                    app:layout_constraintEnd_toStartOf="@+id/yawnCount"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-                <TextView
-                    android:id="@+id/yawnCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginRight="25dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:text="0"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/textVissew8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="2dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:paddingBottom="5dp"
-                    android:text="Average Drowsy Response"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
-                <TextView
-                    android:id="@+id/awakenessLevel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:text="1s"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/textVissew8"
-                    app:layout_constraintTop_toTopOf="@+id/textVissew8" />
-
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="?android:attr/progressBarStyleHorizontal"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="15dp"
-                    android:progress="100"
-                    android:progressDrawable="@drawable/custom_progress_bar"
-                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textVissew8" />
+                    app:layout_constraintStart_toEndOf="@+id/profilePicIV"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/profileFirstName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/rosario_reg"
+                        android:text="Guest"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/profilePicIV"
+                        app:layout_constraintTop_toTopOf="@+id/profilePicIV" />
+
+                    <TextView
+                        android:id="@+id/profileLastName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:fontFamily="@font/rosario_reg"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/profilePicIV"
+                        app:layout_constraintTop_toBottomOf="@+id/profileName" />
+                </LinearLayout>
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="17dp"
-                android:layout_marginTop="10dp"
+
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/background_frame">
@@ -211,8 +145,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:text="Detection Chart"
+                    android:fontFamily="@font/rosario_reg"
+                    android:text="Detection History"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -255,12 +189,144 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginRight="17dp"
+                android:background="@drawable/background_frame"
+                android:clickable="true">
+
+
+                <Spinner
+                    android:id="@+id/detectionResultSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:spinnerMode="dropdown"
+                    android:visibility="gone"
+                    tools:layout_editor_absoluteX="407dp"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="22dp" />
+                <ImageButton
+                    android:id="@+id/detectionResultsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/grey_btn_ripple"
+                    android:src="@drawable/ic_arrow_drop_down_black_24dp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/rosario_reg"
+                    android:text="Drowsy:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/drowsyCountTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/rosario_reg"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                    app:layout_constraintStart_toEndOf="@+id/textView8" />
+
+                <TextView
+                    android:id="@+id/textVisew8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:fontFamily="@font/rosario_reg"
+                    android:text="Yawn:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/yawnCount"
+                    app:layout_constraintEnd_toStartOf="@+id/yawnCount"
+                    app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+                <TextView
+                    android:id="@+id/yawnCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rosario_reg"
+                    android:layout_marginRight="15dp"
+                    android:text="0"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+                <TextView
+                    android:id="@+id/textVissew8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="8dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="@font/rosario_reg"
+                    android:text="User State:"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+                <TextView
+                    android:id="@+id/awakenessLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/rosario_reg"
+                    android:text="AWAKE"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/textVissew8"
+                    app:layout_constraintTop_toTopOf="@+id/textVissew8" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:progress="100"
+                    android:progressDrawable="@drawable/custom_progress_bar"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textVissew8" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="17dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/background_frame"
@@ -293,8 +359,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/nunito_sans"
-                    android:text="Detection Activity Logs"
+                    android:fontFamily="@font/rosario_reg"
+                    android:text="Detection Logs"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"

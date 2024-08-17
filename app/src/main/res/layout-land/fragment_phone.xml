@@ -12,6 +12,16 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_marginTop="-25dp"
+        android:background="@drawable/background_app"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +49,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/background_frame"
                     android:ems="10"
-                    android:fontFamily="@font/nunito_sans"
+                    android:fontFamily="@font/rosario_reg"
                     android:hint="Search contacts"
                     android:inputType="textPersonName"
                     android:paddingLeft="15dp"
@@ -90,28 +100,28 @@
 
 
                         <TextView
-                            android:id="@+id/contactFavorites"
+                            android:id="@+id/phoneContacts"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="20dp"
                             android:background="@drawable/bg_line_below_text"
                             android:clickable="true"
-                            android:fontFamily="@font/nunitosans_semibold"
+                            android:fontFamily="@font/rosario_reg"
 
                             android:paddingBottom="2dp"
-                            android:text="  Favorites  "
+                            android:text="  Contacs  "
                             android:textColor="@drawable/primary_black_selector"
                             android:textSize="20sp" />
 
                         <TextView
-                            android:id="@+id/phoneContacts"
+                            android:id="@+id/contactFavorites"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="20dp"
                             android:clickable="true"
-                            android:fontFamily="@font/nunitosans_semibold"
+                            android:fontFamily="@font/rosario_reg"
                             android:paddingBottom="2dp"
-                            android:text=" Contacts "
+                            android:text=" Favorites "
                             android:textColor="@drawable/black_primary_selector"
                             android:textSize="20sp" />
                     </LinearLayout>

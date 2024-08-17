@@ -110,7 +110,6 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
         changePassArrow=view.findViewById(R.id.changPassArrow);
         changPassLayout=view.findViewById(R.id.ChangePassLayout);
         contact=view.findViewById(R.id.PE_Contact);
-        profileAppDev = view.findViewById(R.id.profileAppDevs);
         profileAppAbout = view.findViewById(R.id.profileAbout);
         profileAppPrivacy=view.findViewById(R.id.profileAppPrivacy);
         toggleBGDetectionSW = view.findViewById(R.id.profileToggleDetectionSW);
@@ -228,13 +227,7 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
             }
         });
 
-        profileAppDev.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CameraActivity.lastFragment= new ProfileFrag();
-                cameraActivity.addFragment(new AppDevFragment());
-            }
-        });
+
         profileAppAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -542,6 +535,8 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
                                 @Override
                                 public void onSuccess(Void result) {
                                     updateSuccessDialog();
+                                    StatsFrag.firstName.setText(userData.get("first_name").toString() + " " + (userData.get("middle_name").toString().trim().isEmpty()?"":userData.get("middle_name")+".") );
+                                    StatsFrag.lastName.setText(userData.get("last_name") + " " + userData.get("suffix"));
                                 }
 
                                 @Override
@@ -601,7 +596,8 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
 
     private  void displayUserInfo(){
         userData= cameraActivity.userInfo;
-        if(!userData.isEmpty()){profileName.setText(userData.get("first_name").toString() + " " + userData.get("middle_name") + ". " + userData.get("last_name") + " " + userData.get("suffix"));
+        if(!userData.isEmpty()){
+            profileName.setText(userData.get("first_name").toString() + " "  + (userData.get("middle_name").toString().trim().isEmpty()?"":userData.get("middle_name")+". ") +userData.get("last_name").toString() + userData.get("suffix"));
 //            HomeFrag. nameDriverTV.setText(userData.get("first_name").toString() + " " + userData.get("middle_name") + ". " + userData.get("last_name") + " " + userData.get("suffix"));
 //            profileAddress.setText(userData.get("address").toString());
             //fixthis
