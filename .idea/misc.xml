@@ -143,6 +143,11 @@
         <entry key="..\:/Stay-Alert-Driver-Drowsiness-Detection-Using-CNN/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Stay-Alert-Driver-Drowsiness-Detection-Using-CNN/app/src/main/res/layout/fragment_stats.xml" value="0.25416666666666665" />
         <entry key="..\:/Stay-Alert-Driver-Drowsiness-Detection-Using-CNN/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/drawable-hdpi/background_frame_outline_top.xml" value="0.2595" />
+        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/drawable-v24/background_frame.xml" value="0.2595" />
+        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/drawable-v24/background_oval_frame.xml" value="0.2595" />
+        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/drawable/background_app.xml" value="0.2585" />
+        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/drawable/background_weather_border.xml" value="0.2595" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/drawable/buttonsign_inup.xml" value="0.2595" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.2595" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/drawable/ic_mapbtn.xml" value="0.2595" />
@@ -158,6 +163,8 @@
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/activity_sign_in.xml" value="0.5714285714285714" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/activity_sign_up.xml" value="0.5714285714285714" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/fragment_home.xml" value="0.4" />
+        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/fragment_profile.xml" value="0.5714285714285714" />
+        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/fragment_stats.xml" value="0.6" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/tfe_od_activity_camera.xml" value="0.523696682464455" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/menu/bottom_menu.xml" value="0.5690866510538641" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/menu/bottom_nav_menu.xml" value="0.5714285714285714" />

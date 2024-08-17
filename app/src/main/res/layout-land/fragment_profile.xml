@@ -48,7 +48,7 @@
                         android:layout_marginLeft="25dp"
 
                         android:clickable="true"
-                        android:src="@drawable/default_profile_pic"
+                        android:src="@drawable/asd"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
