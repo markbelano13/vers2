@@ -69,7 +69,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.awake.custom.classes.BitmapInfo;
 import com.example.awake.custom.classes.ChartGenerator;
 import com.example.awake.custom.classes.ContactsInfo;
@@ -142,7 +141,7 @@ public abstract class CameraActivity extends AppCompatActivity
   private int[] rgbBytes = null;
   private int yRowStride;
   protected int defaultModelIndex = 0;
-  protected int defaultDeviceIndex = 1;
+  protected int defaultDeviceIndex = 0;
   private Runnable postInferenceCallback;
   private Runnable imageConverter;
   protected ArrayList<String> modelStrings = new ArrayList<String>();
@@ -984,7 +983,7 @@ public abstract class CameraActivity extends AppCompatActivity
 
   public void getContactList(){
     Uri uri = ContactsContract.Contacts.CONTENT_URI;
-    String sort = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME+"ASC";
+    String sort = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME;
     Cursor cursor = getContentResolver().query(
             uri, null,null,null,sort
     );

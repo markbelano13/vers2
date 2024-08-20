@@ -16,7 +16,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.awake.databinding.ActivityHomeBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mapbox.android.gestures.MoveGestureDetector;
@@ -32,7 +31,6 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 public class Home extends AppCompatActivity {
 
     ActivityHomeBinding binding;
-    MeowBottomNavigation bottomNavigation;
 
     private MapView mapView;
     FloatingActionButton floatingActionButton;

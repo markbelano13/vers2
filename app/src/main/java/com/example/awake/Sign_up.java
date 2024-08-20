@@ -171,7 +171,7 @@ public class Sign_up extends AppCompatActivity {
                 userData.put("middle_name", "");
                 userData.put("last_name", "");
                 userData.put("suffix", "");
-                userData.put("contact", "");
+                userData.put("contact", "00");
                 userData.put("address", "");
                 userData.put("age", "");
                 userData.put("email", email.getText().toString().trim());
