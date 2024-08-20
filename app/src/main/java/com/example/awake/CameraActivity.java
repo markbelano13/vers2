@@ -446,8 +446,7 @@ public abstract class CameraActivity extends AppCompatActivity
           break;
         case R.id.phone:
           if(bottomNavIndex!=2){
-            bottomNavIndex=2;
-            addFragment(new PhoneFrag());
+
             Toast.makeText(CameraActivity.this, "Phone", Toast.LENGTH_SHORT).show();
           }
           break;
