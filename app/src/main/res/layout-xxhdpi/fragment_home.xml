@@ -298,7 +298,7 @@
             android:layout_margin="10sp"
             android:background="@drawable/grey_btn_ripple_circle"
             android:src="@drawable/ic_expand_round_duotone_line"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/setRoute"
             app:layout_constraintEnd_toStartOf="@+id/setRoute"
             app:layout_constraintTop_toTopOf="@+id/setRoute"
