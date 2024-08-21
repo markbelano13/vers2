@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.awake.R;
@@ -40,6 +41,7 @@ public class DialogHelper {
                 }
                 dialog.dismiss();
                 normalDialog();
+
             }
         });
 

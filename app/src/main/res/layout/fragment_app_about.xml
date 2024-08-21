@@ -53,10 +53,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="15dp"
-                android:clickable="true"
                 android:background="@drawable/background_frame"
+                android:clickable="true"
                 android:orientation="vertical"
-                android:padding="15dp">
+                android:padding="15dp"
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -83,11 +84,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="12dp"
+                            android:layout_weight="1"
                             android:fontFamily="@font/nunito_sans"
                             android:text="Stay Alert: Driver Drowsiness Detection"
                             android:textColor="@color/black"
                             android:textSize="20sp"
-                            android:layout_weight="1"
                             android:textStyle="bold" />
 
                         <TextView
@@ -106,9 +107,9 @@
                             android:id="@+id/gitAppAbout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="12dp"
                             android:layout_gravity="left"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
                             android:background="@drawable/grey_btn_ripple_circle"
                             android:src="@drawable/ic_github_mark" />
                     </LinearLayout>
@@ -179,8 +180,10 @@
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/nunito_sans"
                     android:justificationMode="inter_word"
-                    android:text="It's important to be aware that while StayAlert is a valuable tool for promoting alertness,  technology has limitations. Here are some factors to keep in mind:\n\t\t\u2022External Conditions: Bright light, sunglasses, or wearing a mask can sometimes affect the accuracy of facial feature detection.\n\t\t\u2022Individual Differences: Drowsiness can manifest differently in various people. StayAlert may not capture all signs of fatigue in every user.\n\t\t\u2022Not a Substitute for Awareness: No technology can replace your own judgment behind the wheel. You should always prioritize getting enough rest before driving and pull over if you feel drowsy at any time."             android:textColor="@color/black"
+                    android:text="It's important to be aware that while StayAlert is a valuable tool for promoting alertness,  technology has limitations. Here are some factors to keep in mind:\n\t\t\u2022External Conditions: Bright light, sunglasses, or wearing a mask can sometimes affect the accuracy of facial feature detection.\n\t\t\u2022Individual Differences: Drowsiness can manifest differently in various people. StayAlert may not capture all signs of fatigue in every user.\n\t\t\u2022Not a Substitute for Awareness: No technology can replace your own judgment behind the wheel. You should always prioritize getting enough rest before driving and pull over if you feel drowsy at any time."
+                    android:textColor="@color/black"
                     android:textSize="18sp" />
+
                 <TextView
                     android:id="@+id/tsexstView14"
                     android:layout_width="match_parent"
@@ -200,8 +203,8 @@
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/nunito_sans"
                     android:justificationMode="inter_word"
-                    android:textColor="@color/black"
                     android:text="\t\t\u2022Enhancing road safety by reducing drowsy driving incidents.\n\t\t\u2022Providing peace of mind for drivers and passengers alike, with the understanding that it's one tool in your safety toolbox.\n\t\t\u2022Promoting a more responsible driving experience by combining innovative technology with your own awareness."
+                    android:textColor="@color/black"
                     android:textSize="18sp" />
 
 

@@ -275,7 +275,16 @@ public abstract class CameraActivity extends AppCompatActivity
             "/mnt/sdcard/"));
 
     notificationBuilder = new NotificationBuilder();
-    dialogHelper= new DialogHelper(this);
+    dialogHelper= new DialogHelper(this, new DialogHelper.DialogClickListener() {
+      @Override
+      public void onOkayClicked() {
+      }
+
+      @Override
+      public void onActionClicked() {
+
+      }
+    });
     setContentView(R.layout.tfe_od_activity_camera);
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
     dialogHelper.showLoadingDialog("Fetching Content","Getting things ready...");
@@ -323,11 +332,8 @@ public abstract class CameraActivity extends AppCompatActivity
 
         if(canAlarm){
           if(closePercentage>70 && !ringtone.isPlaying() && !appStopped ){
-            toastAMessage("Drowsiness Alert! Your safety is at risk");
 
-            // Play the default ringtone
             if(detectedEye==null && values[values.length-1]!=null && detectedBitmapInfo.getResultTitles().contains("closed")){
-              ringtone.play();
               detectedBitmap= detectedBitmapInfo.getBitmap();
               detectedEye=eyeStatus;
               detectMS=lastProcessingTimeMs+"";
@@ -390,7 +396,6 @@ public abstract class CameraActivity extends AppCompatActivity
 
         if(canAlarm){
           if(yawnPercentage>70 && !ringtone.isPlaying() && !appStopped ){
-            toastAMessage("Heads up! A yawn can be a sign of fatigue. Consider getting some fresh air");
 
 
             if(statusDriverMouth.contains("ACTIVE") && valuesYawn[valuesYawn.length-1]!=null && lastYawnReportTime>3000){
@@ -409,24 +414,11 @@ public abstract class CameraActivity extends AppCompatActivity
           }
         }
 
-        if(HomeFrag.statusDriverTV!=null){
+        if(StatsFrag.userState!=null){
           StatsFrag.userState.setText((statusDriver.contains("ACTIVE"))?statusDriverMouth:statusDriver);
 
 
-          if(HomeFrag.statusDriverTV.getText().toString().contains("ACTIVE")){
-            if(vibrating){
-              vibrating=false;
-              toastVisible=false;
-              vibrator.cancel();
-              dialogHelper.dismissDialog();
-              dialogHelper.normalDialog();
-            }
-          }else{
-            if(!vibrating){
-              vibrating=true;
-              vibrator.vibrate(pattern, 0);
-            }
-          }
+
         }
         scanHandler.postDelayed(this, 100); // Schedule the task to run again after 100 milliseconds
       }
@@ -473,11 +465,12 @@ public abstract class CameraActivity extends AppCompatActivity
     viewDetection.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        System.out.println("see scan");
+
         elevation= 30;
         changeFrameLayoutElevation();
         canAlarm=true;
       }
+
     });
 
 

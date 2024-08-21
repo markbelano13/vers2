@@ -597,7 +597,7 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
     private  void displayUserInfo(){
         userData= cameraActivity.userInfo;
         if(!userData.isEmpty()){
-            profileName.setText(userData.get("first_name").toString() + " "  + (userData.get("middle_name").toString().trim().isEmpty()?"":userData.get("middle_name")+". ") +userData.get("last_name").toString() + userData.get("suffix"));
+            profileName.setText(userData.get("first_name").toString().trim().isEmpty()?userData.get("email").toString().split("@")[0]:userData.get("first_name").toString()  + " "  + (userData.get("middle_name").toString().trim().isEmpty()?"":userData.get("middle_name")+". ") +userData.get("last_name").toString() + userData.get("suffix"));
 //            HomeFrag. nameDriverTV.setText(userData.get("first_name").toString() + " " + userData.get("middle_name") + ". " + userData.get("last_name") + " " + userData.get("suffix"));
 //            profileAddress.setText(userData.get("address").toString());
             //fixthis
