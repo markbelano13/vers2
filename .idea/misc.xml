@@ -166,11 +166,14 @@
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/drawable/logout.xml" value="0.2595" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/drawable/textinput_border.xml" value="0.2585" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout-hdpi/activity_sign_up.xml" value="0.190625" />
-        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout-land/fragment_phone.xml" value="0.7236533957845434" />
+        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout-hdpi/fragment_home.xml" value="0.305" />
+        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout-land/fragment_home.xml" value="0.6510538641686182" />
+        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout-land/fragment_phone.xml" value="0.3327495621716287" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout-land/fragment_profile.xml" value="0.29388297872340424" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout-land/fragment_stats.xml" value="0.27601809954751133" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout-xxhdpi/activity_sign_in.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout-xxhdpi/activity_sign_up.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout-xxhdpi/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/activity_home.xml" value="0.5714285714285714" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
@@ -180,7 +183,7 @@
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/fragment_home.xml" value="0.4" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/fragment_phone.xml" value="0.5714285714285714" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/fragment_profile.xml" value="0.5714285714285714" />
-        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/fragment_stats.xml" value="0.72" />
+        <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/fragment_stats.xml" value="0.6506849315068494" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/pop_up_dialog.xml" value="0.5702576112412178" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/layout/tfe_od_activity_camera.xml" value="0.4854586129753915" />
         <entry key="..\:/Users/Keth Dominic/Documents/Awake/app/src/main/res/menu/bottom_menu.xml" value="0.5690866510538641" />

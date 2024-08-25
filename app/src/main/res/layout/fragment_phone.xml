@@ -100,9 +100,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
+                        android:background="@drawable/bg_line_below_text"
                         android:clickable="true"
                         android:fontFamily="@font/rosario_reg"
-                        android:background="@drawable/bg_line_below_text"
 
                         android:paddingBottom="2dp"
                         android:text="  Contacs  "
@@ -124,7 +124,8 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/contactsRV"
@@ -136,8 +137,6 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.0" />
-
-
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

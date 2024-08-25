@@ -282,18 +282,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_marginLeft="17dp"
-        android:layout_marginRight="17dp"
         android:layout_marginTop="15dp"
+        android:layout_marginRight="17dp"
         android:layout_marginBottom="20dp"
+        android:layout_weight="1"
 
-        android:background="@drawable/background_frame">
+        android:background="@drawable/background_frame"
+        android:visibility="gone">
 
         <com.mapbox.maps.MapView
+            android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/mapView"/>
+            android:layout_height="match_parent" />
 
         <com.mapbox.navigation.ui.maneuver.view.MapboxManeuverView
             android:id="@+id/maneuverView"
@@ -302,9 +303,9 @@
             android:layout_margin="6sp"
             android:elevation="4sp"
             android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/searchET"
             app:layout_constraintEnd_toEndOf="@+id/mapView"
-            app:layout_constraintStart_toStartOf="@+id/mapView" />
+            app:layout_constraintStart_toStartOf="@+id/mapView"
+            app:layout_constraintTop_toBottomOf="@+id/searchET" />
 
         <ImageButton
             android:id="@+id/closeMap"
@@ -345,16 +346,15 @@
             android:layout_marginBottom="8dp"
 
             app:layout_constraintBottom_toTopOf="@+id/focusLocation"
-            app:layout_constraintEnd_toEndOf="@+id/setRoute"
-             />
+            app:layout_constraintEnd_toEndOf="@+id/setRoute" />
 
         <com.mapbox.search.ui.view.SearchResultsView
             android:id="@+id/search_results_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="70sp"
-            android:layout_marginStart="10sp"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginStart="10sp"
+            android:layout_marginEnd="70sp"
             android:elevation="4dp"
             android:paddingTop="8dp"
             android:paddingBottom="22dp"
@@ -382,19 +382,16 @@
             android:id="@+id/setRoute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Set Route"
-            app:fabCustomSize="50dp"
             android:layout_above="@id/setRoute"
             android:layout_alignParentEnd="true"
             android:layout_margin="16sp"
             android:backgroundTint="@color/primary"
+            android:hint="Set Route"
             android:src="@drawable/ic_baseline_assistant_direction_24"
+            app:fabCustomSize="50dp"
             app:layout_constraintBottom_toBottomOf="@+id/mapView"
             app:layout_constraintEnd_toEndOf="@+id/mapView"
             app:tint="@color/white" />
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
