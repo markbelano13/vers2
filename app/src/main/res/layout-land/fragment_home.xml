@@ -289,7 +289,7 @@
         android:layout_weight="1"
 
         android:background="@drawable/background_frame"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <com.mapbox.maps.MapView
             android:id="@+id/mapView"

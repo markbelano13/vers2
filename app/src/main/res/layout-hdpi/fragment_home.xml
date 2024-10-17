@@ -268,7 +268,7 @@
         android:layout_marginBottom="20dp"
 
         android:background="@color/white"
-        android:visibility="gone">
+        android:visibility="visible">
 
 
         <com.mapbox.maps.MapView

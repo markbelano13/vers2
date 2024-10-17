@@ -350,7 +350,7 @@ public class StatsFrag extends Fragment implements AdapterView.OnItemSelectedLis
             }
         }
 
-        displayChart(range, 3);
+//        displayChart(range, 3);
 
 
     }
