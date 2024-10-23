@@ -388,26 +388,12 @@ public class ChartGenerator {
         }
 
 
-        ArrayList<Entry> drowsyCountList1 = new ArrayList<>();
-        drowsyCountList1.add(new Entry(0, 1));
-        drowsyCountList1.add(new Entry(1, 2));
-        drowsyCountList1.add(new Entry(2, 3));
-        drowsyCountList1.add(new Entry(3, 2));
-        drowsyCountList1.add(new Entry(4, 1));
-
-        ArrayList<Entry> yawnCountList1 = new ArrayList<>();
-        yawnCountList1.add(new Entry(0, 3));
-        yawnCountList1.add(new Entry(1, 2));
-        yawnCountList1.add(new Entry(2, 2));
-        yawnCountList1.add(new Entry(3, 1));
-        yawnCountList1.add(new Entry(4, 4));
-
-        LineDataSet dataSet1 = new LineDataSet(drowsyCountList1, "Drowsy");
+        LineDataSet dataSet1 = new LineDataSet(drowsyCountList, "Drowsy");
         dataSet1.setColor(Color.BLUE);
         dataSet1.setValueFormatter(new MyValueFormatter());
         dataSet1.setDrawCircles(false);
 
-        LineDataSet dataSet2 = new LineDataSet(yawnCountList1, "Yawn");
+        LineDataSet dataSet2 = new LineDataSet(yawnCountList, "Yawn");
         dataSet2.setColor(Color.RED);
         dataSet2.setValueFormatter(new MyValueFormatter());
         dataSet2.setDrawCircles(false);

@@ -13,5 +13,9 @@
         <item>7 Days</item>
         <item>30 Days</item>
     </string-array>
+    <string-array name="vehicle_type">
+        <item>Car</item>
+        <item>Bus/Truck</item>
+    </string-array>
     <string name="mapbox_access_token" translatable="false" tools:ignore="UnusedResources">sk.eyJ1IjoidGl5b3dvcmtzIiwiYSI6ImNsdGcwbHE5MTB1Z3QyaXFsdHAxZHN5N3oifQ.ZvLhY5cIoH0Yaxbak7ZcXw</string>
 </resources>

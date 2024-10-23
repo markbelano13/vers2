@@ -134,7 +134,7 @@
                             android:id="@+id/contactsRV"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:visibility="gone"
+                            android:visibility="visible"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
@@ -150,7 +150,7 @@
                             android:layout_marginBottom="10dp"
                             android:background="@drawable/grey_btn_ripple_circle"
                             android:src="@drawable/ic_dialpad"
-                            android:visibility="gone"
+                            android:visibility="visible"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent" />
 

@@ -795,6 +795,91 @@
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/profileChangeVehicle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/grey_btn_ripple"
+                    android:clickable="true">
+
+
+                    <TextView
+                        android:id="@+id/textViewe33w"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="17dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="6dp"
+                        android:fontFamily="@font/rosario_reg"
+                        android:text="Change Vehicle"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:id="@+id/changeVehicleArrow"
+                        android:layout_width="10dp"
+                        android:layout_height="24dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/grey_btn_ripple"
+                        android:src="@drawable/ic_arrow_settings"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/changeVehicleLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="40dp"
+                            app:cardCornerRadius="0dp"
+                            app:cardElevation="0dp">
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/profileCarPersonalRB"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Car/Personal Vehicle"
+                                app:buttonTint="@color/primary" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="40dp"
+                            app:cardCornerRadius="0dp"
+                            app:cardElevation="0dp">
+
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:id="@+id/profileBusTruckRB"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Bus/Trucks/Heavy Vehicle"
+                                app:buttonTint="@color/primary" />
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
                 <LinearLayout
@@ -802,6 +887,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
 
 
                     <androidx.constraintlayout.widget.ConstraintLayout

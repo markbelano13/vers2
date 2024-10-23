@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,13 +50,13 @@ import helper.classes.DialogHelper;
 
 public class ProfileFrag extends Fragment implements View.OnTouchListener{
     private static final String TAG = "ProfileFrag";
-    ConstraintLayout profileLogout,edit, changePass,cancelSave,showInfoLayout, changPassLayout, profileAppDev, profileAppAbout, profileAppPrivacy;
+    ConstraintLayout profileLogout,edit, changePass,cancelSave,showInfoLayout, changPassLayout,changeVehicle, changeVehicleLayout, profileAppAbout, profileAppPrivacy;
     LinearLayout toBeGone;
     TextInputEditText fName,mName,lName,suffix,contact,age,address,newPassword,conPassword, oldPassword;
     TextInputLayout fNameIL,mNameIL,lNameIL,suffixIL,contactIL,ageIL,addressIL,newPasswordIL,conPasswordIL, oldPasswordIL;
     TextView profileName, profileAddress, save, cancel;
     CircleImageView profileImage;
-    ImageView editArrow, profileCam, changePassArrow;
+    ImageView editArrow, profileCam, changePassArrow, changeVehicleArrow;
     FirebaseFirestore db;
     FirebaseAuth auth;
     FirebaseUser user;
@@ -69,6 +70,8 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
     boolean profilePicChanged = false;
     Bitmap picBitmap, oldPic;
     Switch toggleBGDetectionSW;
+    RadioButton carPersonal;
+    RadioButton busTruck;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,6 +91,7 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
         conPasswordIL=view.findViewById(R.id.PE_ConPassLayout);
         oldPasswordIL=view.findViewById(R.id.PE_OldPassLayout);
         changePass=view.findViewById(R.id.profileChangePass);
+        changeVehicle = view.findViewById(R.id.profileChangeVehicle);
         toBeGone=view.findViewById(R.id.profileTobeGone);
         cancelSave=view.findViewById(R.id.ProfileSaveCancel);
         profileName = view.findViewById(R.id.profileName);
@@ -108,11 +112,13 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
         newPassword=view.findViewById(R.id.PE_Pass);
         conPassword=view.findViewById(R.id.PE_ConPass);
         changePassArrow=view.findViewById(R.id.changPassArrow);
+        changeVehicleArrow=view.findViewById(R.id.changeVehicleArrow);
         changPassLayout=view.findViewById(R.id.ChangePassLayout);
         contact=view.findViewById(R.id.PE_Contact);
         profileAppAbout = view.findViewById(R.id.profileAbout);
         profileAppPrivacy=view.findViewById(R.id.profileAppPrivacy);
         toggleBGDetectionSW = view.findViewById(R.id.profileToggleDetectionSW);
+        changeVehicleLayout = view.findViewById(R.id.changeVehicleLayout);
 
         fName.setOnTouchListener(this);
         mName.setOnTouchListener(this);
@@ -144,6 +150,26 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
         ccp = view.findViewById(R.id.ccp);
         ccp.hideNameCode(true);
         ccp.registerPhoneNumberTextView(contact);
+
+        carPersonal = view.findViewById(R.id.profileCarPersonalRB);
+        busTruck = view.findViewById(R.id.profileBusTruckRB);
+
+        carPersonal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                busTruck.setChecked(false);
+                carPersonal.setChecked(true);
+            }
+        });
+
+        busTruck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                busTruck.setChecked(true);
+                carPersonal.setChecked(false);
+            }
+        });
+
 
 
         dialogHelper = new DialogHelper(cameraActivity, new DialogHelper.DialogClickListener() {
@@ -269,6 +295,19 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
                         dialogAction="signup";
                         dialogHelper.errorTitle();
                         dialogHelper.showDialog("Change Password","You need to sing up first");
+                    }
+                }else{
+                    displayTBG();
+                }
+            }
+        });
+
+        changeVehicle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(toBeGone.getVisibility()==View.VISIBLE) {
+                    if (!userData.isEmpty()) {
+                        showChangeVehicle();
                     }
                 }else{
                     displayTBG();
@@ -417,6 +456,25 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
                     }
 
 
+                }else if(changeVehicleLayout.getVisibility()==View.VISIBLE){
+                    Map<String, Object> newVehicle = new HashMap<>();
+                    newVehicle.put("vehicle_type", carPersonal.isChecked()?"car":"truck");
+
+                    DocumentReference ref = db.collection("users").document(auth.getUid());
+                    firebaseDB.updateUserInfo(newVehicle,ref, new FirebaseDatabase.TaskCallback<Void>() {
+                        @Override
+                        public void onSuccess(Void result) {
+                            dialogHelper.showDialog("Change Vehicle","Vehicle successfully changed");
+                            cameraActivity.vehicle=carPersonal.isChecked()?"car":"truck";
+                            displayTBG();
+                            getUserInfo();
+                        }
+                        @Override
+                        public void onFailure(String errorMessage) {
+                            dialogHelper.errorTitle();
+                            dialogHelper.showDialog("Change Vehicle",errorMessage);
+                        }
+                    });
                 }
 
 
@@ -442,6 +500,8 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
                     }else{
                         displayTBG();
                     }
+                }else if (changeVehicleLayout.getVisibility()==View.VISIBLE){
+                    displayTBG();
                 }
 
             }
@@ -520,7 +580,6 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
 
         DocumentReference ref =db.collection("users").document(auth.getUid());
         firebaseDB.updateUserInfo(userData,ref, new FirebaseDatabase.TaskCallback<Void>() {
-
             @Override
             public void onSuccess(Void result) {
                 if(oldContact!=null){
@@ -598,9 +657,7 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
         userData= cameraActivity.userInfo;
         if(!userData.isEmpty()){
             profileName.setText(userData.get("first_name").toString().trim().isEmpty()?userData.get("email").toString().split("@")[0]:userData.get("first_name").toString()  + " "  + (userData.get("middle_name").toString().trim().isEmpty()?"":userData.get("middle_name")+". ") +userData.get("last_name").toString() + userData.get("suffix"));
-//            HomeFrag. nameDriverTV.setText(userData.get("first_name").toString() + " " + userData.get("middle_name") + ". " + userData.get("last_name") + " " + userData.get("suffix"));
-//            profileAddress.setText(userData.get("address").toString());
-            //fixthis
+            profileAddress.setText(userData.get("address").toString());
         }
     }
 
@@ -610,6 +667,7 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
         changPassLayout.setVisibility(View.VISIBLE);
         edit.setVisibility(View.GONE);
         toBeGone.setVisibility(View.GONE);
+        changeVehicle.setVisibility(View.GONE);
         oldPassword.setText("");
         newPassword.setText("");
         conPassword.setText("");
@@ -631,11 +689,31 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
         address.setText(userData.get("address").toString());
 
         changePass.setVisibility(View.GONE);
+        changeVehicle.setVisibility(View.GONE);
         toBeGone.setVisibility(View.GONE);
         cancelSave.setVisibility(View.VISIBLE);
         showInfoLayout.setVisibility(View.VISIBLE);
         editArrow.setRotation(90);
         profileCam.setVisibility(View.VISIBLE);
+    }
+
+    public void showChangeVehicle(){
+        changeVehicleLayout.setVisibility(View.VISIBLE);
+        changeVehicle.setVisibility(View.VISIBLE);
+        changPassLayout.setVisibility(View.GONE);
+        changePass.setVisibility(View.GONE);
+        edit.setVisibility(View.GONE);
+        toBeGone.setVisibility(View.GONE);
+        cancelSave.setVisibility(View.VISIBLE);
+        changeVehicleArrow.setRotation(90);
+
+        if(cameraActivity.vehicle.equals("car")){
+            carPersonal.setChecked(true);
+            busTruck.setChecked(false);
+        }else{
+            busTruck.setChecked(true);
+            carPersonal.setChecked(false);
+        }
     }
 
     public boolean isNoChanges(){
@@ -658,13 +736,16 @@ public class ProfileFrag extends Fragment implements View.OnTouchListener{
     public void displayTBG(){
         edit.setVisibility(View.VISIBLE);
         changePass.setVisibility(View.VISIBLE);
+        changeVehicle.setVisibility(View.VISIBLE);
         toBeGone.setVisibility(View.VISIBLE);
         cancelSave.setVisibility(View.GONE);
         showInfoLayout.setVisibility(View.GONE);
         changPassLayout.setVisibility(View.GONE);
+        changeVehicleLayout.setVisibility(View.GONE);
         profileCam.setVisibility(View.GONE);
         editArrow.setRotation(0);
         changePassArrow.setRotation(0);
+        changeVehicleArrow.setRotation(0);
     }
 
     public boolean passIsEmpty(){

@@ -31,6 +31,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 
@@ -86,6 +87,7 @@ public class Sign_up extends AppCompatActivity {
     boolean cameraPermissionDialog=false, userDataExist=false;
     private DialogHelper dialogHelper;
     String dialogAction="";
+    String vehicle="car";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +118,8 @@ public class Sign_up extends AppCompatActivity {
         email= findViewById(R.id.ETemailSignup);
         pass= findViewById(R.id.ETpassSignup);
         conPass= findViewById(R.id.ETconPassSignup);
+        RadioButton carPersonal = findViewById(R.id.carPersonalRB);
+        RadioButton busTruck = findViewById(R.id.busTruckRB);
 
 
 
@@ -157,6 +161,26 @@ public class Sign_up extends AppCompatActivity {
 
 
 
+        carPersonal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                busTruck.setChecked(false);
+                carPersonal.setChecked(true);
+                vehicle="car";
+            }
+        });
+
+        busTruck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                busTruck.setChecked(true);
+                carPersonal.setChecked(false);
+                vehicle="truck";
+            }
+        });
+
+
+
 
 
 
@@ -171,13 +195,14 @@ public class Sign_up extends AppCompatActivity {
                 userData.put("middle_name", "");
                 userData.put("last_name", "");
                 userData.put("suffix", "");
-                userData.put("contact", "00");
+                userData.put("contact", "");
                 userData.put("address", "");
                 userData.put("age", "");
                 userData.put("email", email.getText().toString().trim());
                 userData.put("password", pass.getText().toString());
                 userData.put("sign_in_method", signUpMethod);
                 userData.put("last_sign_in", new Date());
+                userData.put("vehicle_type",vehicle);
 
 
                 if(!email.getText().toString().trim().isEmpty()  && !pass.getText().toString().trim().isEmpty()

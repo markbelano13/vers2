@@ -244,6 +244,9 @@ public abstract class CameraActivity extends AppCompatActivity
   FloatingActionButton viewDetection;
   BottomAppBar bottomAppBar;
 
+  String vehicle="car";
+  int alarmCount=0;
+
 
 
   @Override
@@ -278,6 +281,7 @@ public abstract class CameraActivity extends AppCompatActivity
     dialogHelper= new DialogHelper(this, new DialogHelper.DialogClickListener() {
       @Override
       public void onOkayClicked() {
+
       }
 
       @Override
@@ -312,7 +316,9 @@ public abstract class CameraActivity extends AppCompatActivity
     long[] pattern = {0, 1000, 1000};
     String[] values = new String[20];
     detectedBitmapInfo= new BitmapInfo();
-    
+
+
+
 
 
     runnableCode = new Runnable() {
@@ -332,7 +338,13 @@ public abstract class CameraActivity extends AppCompatActivity
 
         if(canAlarm){
           if(closePercentage>70 && !ringtone.isPlaying() && !appStopped ){
-            toastAMessage("Drowsiness Alert! Your safety is at risk");
+
+            if(alarmCount>4){
+              toastAMessage(vehicle.equals("car")?"Drowsiness Alert! Please change drivers immediately.":"Drowsiness Alert! You must take a rest and pullover for safety.");
+
+            }else{
+              toastAMessage("Drowsiness Alert! Your safety is at risk");
+            }
 
             // Play the default ringtone
             if(detectedEye==null && values[values.length-1]!=null && detectedBitmapInfo.getResultTitles().contains("closed")){
@@ -342,12 +354,12 @@ public abstract class CameraActivity extends AppCompatActivity
               detectMS=lastProcessingTimeMs+"";
               startResponseTime= System.currentTimeMillis();
               statusDriver=" DROWSY ";
+              alarmCount++;
             }
           }
 
           else if(closePercentage<60){
             if(detectedEye!=null && values[values.length-1]!=null){
-              System.out.println("insert");
               currentResponseTime = (double) (System.currentTimeMillis() - (double)startResponseTime - 1500.0)/1000.0;
               if(currentResponseTime<0){
                 currentResponseTime=0.3;
@@ -399,7 +411,15 @@ public abstract class CameraActivity extends AppCompatActivity
 
         if(canAlarm){
           if(yawnPercentage>70 && !ringtone.isPlaying() && !appStopped ){
-            toastAMessage("Heads up! A yawn can be a sign of fatigue. Consider getting some fresh air");
+
+
+            if(alarmCount>4){
+              toastAMessage(vehicle.equals("car")?"Drowsiness Alert! Please change drivers immediately.":"Drowsiness Alert! You must take a rest and pullover for safety.");
+            }else{
+              toastAMessage("Heads up! A yawn can be a sign of fatigue. Consider getting some fresh air");
+            }
+
+
 
 
             if(statusDriverMouth.contains("ACTIVE") && valuesYawn[valuesYawn.length-1]!=null && lastYawnReportTime>3000){
@@ -454,7 +474,7 @@ public abstract class CameraActivity extends AppCompatActivity
           break;
         case R.id.phone:
           if(bottomNavIndex!=2){
-//            addFragment(new PhoneFrag());
+            addFragment(new PhoneFrag());
             Toast.makeText(CameraActivity.this, "Phone", Toast.LENGTH_SHORT).show();
           }
           break;
@@ -720,6 +740,10 @@ public abstract class CameraActivity extends AppCompatActivity
         firebaseDB.checkStatCount("drowsy");
         firebaseDB.checkStatCount("yawn");
         firebaseDB.checkStatCount("average_response");
+
+        if(userInfo.get("vehicle_type")!=null && userInfo.get("vehicle_type").equals("truck")){
+          vehicle="truck";
+        }
 
 
 

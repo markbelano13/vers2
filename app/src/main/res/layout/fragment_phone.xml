@@ -125,7 +125,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/contactsRV"
@@ -164,9 +164,9 @@
         android:id="@+id/dialPadLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/background_frame_outline_top"
         android:paddingBottom="30dp"
         android:visibility="gone"
-        android:background="@drawable/background_frame_outline_top"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout9">
 
         <LinearLayout
@@ -177,12 +177,11 @@
             android:orientation="vertical">
 
 
-
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/phoneNumberET"
@@ -199,11 +198,10 @@
                     android:text=""
                     android:textSize="35sp"
                     android:textStyle="bold"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     tools:layout_editor_absoluteX="6dp"
                     tools:layout_editor_absoluteY="331dp" />
             </LinearLayout>
-
 
 
             <LinearLayout
@@ -227,9 +225,9 @@
                         android:background="@drawable/grey_btn_ripple_circle"
                         android:clickable="true"
                         android:gravity="center"
+                        android:maxLength="13"
                         android:paddingBottom="15dp"
                         android:text="1"
-                        android:maxLength="13"
                         android:textColor="@drawable/black_primary_selector"
                         android:textSize="30sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -660,9 +658,8 @@
                     android:clickable="true"
                     android:gravity="center"
                     android:text="close"
-                    android:textSize="20sp"
                     android:textColor="@drawable/black_primary_selector"
-                    />
+                    android:textSize="20sp" />
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -695,25 +692,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingTop="19dp"
-                        android:paddingBottom="19dp"
-                        android:paddingLeft="9dp"
-                        android:paddingRight="16dp"
                         android:background="@drawable/grey_btn_ripple_circle"
+                        android:paddingLeft="9dp"
+                        android:paddingTop="19dp"
+                        android:paddingRight="16dp"
+                        android:paddingBottom="19dp"
                         android:src="@drawable/ic_delete_button"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
             </LinearLayout>
-
 
 
         </LinearLayout>

@@ -116,6 +116,51 @@
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:text="Select vehicle type:" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="4dp"
+                app:strokeColor="@color/primary"
+                app:strokeWidth="2dp">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/carPersonalRB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Car/Personal Vehicle"
+                    app:buttonTint="@color/primary" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                app:cardCornerRadius="4dp"
+                app:strokeColor="@color/primary"
+                app:strokeWidth="2dp">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/busTruckRB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bus/Trucks/Heavy Vehicle"
+                    app:buttonTint="@color/primary" />
+            </com.google.android.material.card.MaterialCardView>
+
             <Button
                 android:id="@+id/BTNsignup"
                 android:layout_width="match_parent"

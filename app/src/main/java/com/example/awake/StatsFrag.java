@@ -143,9 +143,6 @@ public class StatsFrag extends Fragment implements AdapterView.OnItemSelectedLis
         if(!userData.isEmpty()){
             firstName.setText(userData.get("first_name").toString().trim().isEmpty()?userData.get("email").toString().split("@")[0]:userData.get("first_name").toString()  + " " + (userData.get("middle_name").toString().trim().isEmpty()?"":userData.get("middle_name")+".") );
             lastName.setText(userData.get("last_name") + " " + userData.get("suffix"));
-//            HomeFrag. nameDriverTV.setText(userData.get("first_name").toString() + " " + userData.get("middle_name") + ". " + userData.get("last_name") + " " + userData.get("suffix"));
-//            profileAddress.setText(userData.get("address").toString());
-            //fixthis
         }
 
         Bitmap bitmap = firebaseDB.getImageFromLocal(cameraActivity, auth.getUid()+"/userRes","profile_pic.jpg");
@@ -350,7 +347,7 @@ public class StatsFrag extends Fragment implements AdapterView.OnItemSelectedLis
             }
         }
 
-//        displayChart(range, 3);
+        displayChart(range, 3);
 
 
     }
