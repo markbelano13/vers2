@@ -38,6 +38,7 @@ import android.media.Image;
 import android.media.Image.Plane;
 import android.media.ImageReader;
 import android.media.ImageReader.OnImageAvailableListener;
+import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -72,6 +73,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.awake.custom.classes.BitmapInfo;
 import com.example.awake.custom.classes.ChartGenerator;
 import com.example.awake.custom.classes.ContactsInfo;
+import com.example.awake.custom.classes.CustomRingtone;
 import com.example.awake.custom.classes.CustomizedExceptionHandler;
 import com.example.awake.custom.classes.DetectionLogsInfo;
 import com.example.awake.custom.classes.NotificationBuilder;
@@ -246,6 +248,7 @@ public abstract class CameraActivity extends AppCompatActivity
 
   String vehicle="car";
   int alarmCount=0;
+  MediaPlayer ringtoneAlarm;
 
 
 
@@ -316,6 +319,7 @@ public abstract class CameraActivity extends AppCompatActivity
     long[] pattern = {0, 1000, 1000};
     String[] values = new String[20];
     detectedBitmapInfo= new BitmapInfo();
+    ringtoneAlarm = MediaPlayer.create(CameraActivity.this, R.raw.ringtone_alarm);
 
 
 
