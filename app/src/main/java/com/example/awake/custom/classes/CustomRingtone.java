@@ -17,6 +17,14 @@ public class CustomRingtone {
         if (!isPlaying) {
             alarm.start();
             isPlaying = true;
+            alarm.setOnCompletionListener(mp -> {
+                // Reset the player when the sound finishes playing
+                isPlaying = false;
+            });
+        } else {
+            // If it's already playing, reset the MediaPlayer and play again
+            alarm.seekTo(0);
+            alarm.start();
         }
     }
 
@@ -24,7 +32,8 @@ public class CustomRingtone {
     public void stop() {
         if (isPlaying) {
             alarm.stop();
-            alarm.release();  // Make sure to release the MediaPlayer when you're done
+            alarm.reset();  // Reset the MediaPlayer to prepare it for reuse
+            alarm.release(); // Release resources
             isPlaying = false;
         }
     }
