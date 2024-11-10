@@ -187,7 +187,7 @@ public abstract class CameraActivity extends AppCompatActivity
   private Runnable runnableCode;
   private Runnable mouthRunnable;
   boolean ring=false;
-  Ringtone ringtone;
+  CustomRingtone ringtone;
   boolean  appStopped=false;
   Handler schedHandler;
   Runnable connectivityCheckRunnable;
@@ -300,7 +300,6 @@ public abstract class CameraActivity extends AppCompatActivity
     scanHandler = new Handler();
     Uri defaultRingtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
     // Create a Ringtone object from the URI
-    ringtone = RingtoneManager.getRingtone(CameraActivity.this, defaultRingtoneUri);
 
 
     backBtn= findViewById(R.id.backBtn);
@@ -319,8 +318,7 @@ public abstract class CameraActivity extends AppCompatActivity
     long[] pattern = {0, 1000, 1000};
     String[] values = new String[20];
     detectedBitmapInfo= new BitmapInfo();
-    ringtoneAlarm = MediaPlayer.create(CameraActivity.this, R.raw.ringtone_alarm);
-
+    ringtone = new CustomRingtone(MediaPlayer.create(CameraActivity.this, R.raw.ringtone_alarm));
 
 
 

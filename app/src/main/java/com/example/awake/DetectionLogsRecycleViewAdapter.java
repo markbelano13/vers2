@@ -75,12 +75,12 @@ public class DetectionLogsRecycleViewAdapter  extends  RecyclerView.Adapter<Dete
                 }
             });
 
-//            viewImageBtn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    helper.showDialog(info);
-//                }
-//            });
+            viewImageBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    helper.showDialog(info);
+                }
+            });
 
 
 

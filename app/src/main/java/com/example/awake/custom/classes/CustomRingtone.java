@@ -4,19 +4,33 @@ import android.media.MediaPlayer;
 
 public class CustomRingtone {
 
-    boolean isPlayinh=false;
-    MediaPlayer alarm;
+    private boolean isPlaying = false;
+    private MediaPlayer alarm;
 
-    public CustomRingtone(MediaPlayer alarm){
-        this.alarm=alarm;
+    // Constructor that accepts MediaPlayer
+    public CustomRingtone(MediaPlayer mediaPlayer) {
+        this.alarm = mediaPlayer;
     }
 
-    private void stop(){
-
+    // Method to play the ringtone
+    public void play() {
+        if (!isPlaying) {
+            alarm.start();
+            isPlaying = true;
+        }
     }
-    private void play(){
 
+    // Method to stop the ringtone
+    public void stop() {
+        if (isPlaying) {
+            alarm.stop();
+            alarm.release();  // Make sure to release the MediaPlayer when you're done
+            isPlaying = false;
+        }
     }
 
-
+    // Getter for isPlaying
+    public boolean isPlaying() {
+        return isPlaying;
+    }
 }
